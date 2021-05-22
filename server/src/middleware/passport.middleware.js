@@ -1,7 +1,7 @@
 import passport from 'passport';
 import passportJWT from 'passport-jwt';
 
-import { databaseVariables, EnvironmentVariables } from '../config';
+import { EnvironmentVariables } from '../config';
 
 // Initialise passport
 const JwtStrategy = passportJWT.Strategy;
@@ -13,17 +13,13 @@ const jwtOptions = {
 	secretOrKey: EnvironmentVariables.JWT_SECRET_KEY,
 };
 
-const jwtStrategy = null;
-
-if (jwtStrategy === null) {
-	new JwtStrategy(jwtOptions, async (jwtData, done) => {
-		try {
-			// Logger.info(`${jwtData.username} does an authenticated request`);
-			return done(null, jwtData.username);
-		} catch (error) {
-			done(null, error);
-		}
-	});
-}
+const jwtStrategy = new JwtStrategy(jwtOptions, async (jwtData, done) => {
+	try {
+		// Logger.info(`${jwtData.username} does an authenticated request`);
+		return done(null, jwtData.username);
+	} catch (error) {
+		return done(null, error);
+	}
+});
 
 export { jwtStrategy };

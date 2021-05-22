@@ -2,9 +2,11 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
+import http from 'http';
 import path from 'path';
 import nunjucks from 'nunjucks';
 import swaggerUi from 'swagger-ui-express';
+import { createTerminus } from '@godaddy/terminus';
 
 /*
 Custom modules
@@ -109,43 +111,38 @@ app.use((err, req, res, next) => {
 });
 
 /*
-Start the server
+Create the server
+*/
+const server = http.createServer(app);
+
+/*
+Shutdown the application gracefully
+*/
+const onSignal = () => {
+	console.log('server is starting cleanup');
+	// start cleanup of resource, like databases or file descriptors
+};
+
+const onHealthCheck = async () => {
+	// checks if the system is healthy, like the db connection is live
+	// resolves, if health, rejects if not
+};
+
+createTerminus(server, {
+	signal: 'SIGINT',
+	healthChecks: { '/healthcheck': onHealthCheck },
+	onSignal,
+});
+
+/*
+Server
 Listen to incoming requests
 */
-let server;
 if (EnvironmentVariables.NODE_ENV !== 'test') {
-	server = app.listen(EnvironmentVariables.PORT, EnvironmentVariables.HOSTNAME, (err) => {
+	server.listen(EnvironmentVariables.PORT, EnvironmentVariables.HOSTNAME, (err) => {
 		if (err) throw err;
 		if (EnvironmentVariables.NODE_ENV === 'development') {
 			console.log(`Server is listening at http://${EnvironmentVariables.HOSTNAME}:${EnvironmentVariables.PORT}!`);
 		}
 	});
 }
-
-/*
-Handle shutdown gracefully
-*/
-const handleGracefully = async () => {
-	try {
-		await server.close(async (err) => {
-			if (err) throw err;
-
-			if (EnvironmentVariables.NODE_ENV === 'development') {
-				console.log('Server is gracefully closed!');
-			}
-			process.exit(0);
-		});
-	} catch (ex) {
-		console.error(ex);
-	}
-};
-
-/*
-Shutdown the application
-*/
-process.on('SIGINT', () => {
-	handleGracefully();
-});
-process.on('SIGTERM', () => {
-	handleGracefully();
-});

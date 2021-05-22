@@ -1,27 +1,28 @@
 import { Model, DataTypes } from 'sequelize';
 
 export default (sequelize) => {
-	class Category extends Model {
+	class OrderProduct extends Model {
 		static associate(models) {
 			this.hasMany(models.Product);
 		}
 	}
 
-	Category.init(
+	OrderProduct.init(
 		{	
-			name: {
+			productId: {
 				type: DataTypes.STRING,
 				allowNull: false
 			},
-			parentId: {
-				type: DataTypes.STRING
+			orderId: {
+				type: DataTypes.STRING,
+                allowNull: false
 			},
 		},
 		{
 			sequelize,
-			modelName: 'Category',
+			modelName: 'OrderProduct',
 		},
 	);
 
-	return Category;
+	return OrderProduct;
 };

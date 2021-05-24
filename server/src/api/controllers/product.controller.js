@@ -1,13 +1,15 @@
-import { handleHTTPError } from '../../utils';
+import { handleHTTPError, HTTPError } from '../../utils';
 import database from '../../database';
 
 /*
-Get all products
+Get all users
 */
 const getProducts = async (req, res, next) => {
 	try {
-		// Get products from database
-		const products = await database.Product.findAll();
+		// Get users from database
+		let products = null;		
+        products = await database.Product.findAll();
+
 		// Send response
 		res.status(200).json(products);
 	} catch (error) {
@@ -16,23 +18,100 @@ const getProducts = async (req, res, next) => {
 };
 
 /*
-Get a specific product
+Get a specific user uuid
 */
 const getProductById = async (req, res, next) => {
 	try {
-		// Get productId parameter
-		const { productId } = req.params;
-		// Get specific product from database
-		const product = await database.Product.findAll({
-			where: {
-				id: productId,
-			},
-		});
+		// Get userId parameter
+		const { id } = req.params;
+		// Get specific user from database
+		const product = await database.User.findByPK(id);
+
+		if (product === null) {
+			throw new HTTPError(`Could not found the product with id ${id}!`, 404);
+		}
 		// Send response
-		res.status(200).json(product);
+		res.status(200).json(user);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
 };
 
-export { getProductById, getProducts };
+/*
+Create a new user
+*/
+const createProduct = async (req, res, next) => {
+	try {
+		// Get body from response
+		const model = req.body;
+		// Create a post
+		const createdModel = await database.Product.create(model);
+		// Send response
+		res.status(201).json(createdModel);
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
+};
+
+/*
+Update an exisiting user
+*/
+const updateProduct = async (req, res, next) => {
+	try {
+		// Get uuid parameter
+		const { id } = req.params;
+
+		// Get specific user from database
+		const product = await database.Product.findByPK(id);
+
+		if (product === null) {
+			throw new HTTPError(`Could not found the product with id ${id}!`, 404);
+		}
+
+		// Update a specific user
+		const model = req.body;
+		const updatedProduct = await database.Product.update(model, {
+			where: {
+				id: id,
+			},
+		});
+
+		// Send response
+		res.status(200).json(updatedProduct);
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
+};
+
+/*
+Delete an exisiting user
+*/
+const deleteProduct = async (req, res, next) => {
+	try {
+		// Get uuid parameter
+		const { id } = req.params;
+		// Get specific user from database
+		const product = await database.Product.findByPK(id);
+
+		if (product === null) {
+			throw new HTTPError(`Could not found the product with id ${id}!`, 404);
+		}
+
+		// Delete a user with specified id
+		const message = await database.Product.destroy({
+			where: {
+				id: id,
+			},
+		});
+
+		// Send response
+		res.status(200).json(message);
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
+};
+
+export {
+	createProduct, getProducts, getProductById, updateProduct, deleteProduct
+};
+

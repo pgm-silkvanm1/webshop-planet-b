@@ -61,9 +61,74 @@ router.put('/categories/:categoryId', categoryController.updateCategory);
 router.delete('/categories/:categoryId', categoryController.deleteCategory);
 
 router.get('/products', productController.getProducts);
-router.get('/products/:productId', productController.getProductById);
+router.get('/products/:id', productController.getProductById);
+router.post('/products/', productController.createProduct);
+router.put('/products/:id', productController.updateProduct);
+router.delete('/products/:id', productController.deleteProduct);
 
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Retrieve a list of users
+ *     description: Retrieve a list of users. Can be used to populate a list of userss when prototyping or testing an API.*
+ *     responses:
+ *       200:
+ *         description: A list of users.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                  data:
+*                       type: object
+*                       properties:
+*                           id:
+*                           type: integer
+*                           description: The user ID.
+*                           example: 1
+*                       uuid:
+*                           type: uuid
+*                           description: The user ID.
+*                           example: de0bd885-6c95-4828-927e-d205cbf843ad
+*                        email:
+*                           type: string
+*                           description: The user email address.
+*                           example: johndoe @ someone.com
+*                       password:
+*                           type: string
+*                           description: The user password.
+*                           example: mypassword
+*                       admin:
+*                          type: boolean
+*                          description: The user role.
+*                          example: false
+*/
 router.get('/users', userController.getUsers);
+router.get('/users/:uuid', userController.getUserByUuid);
+/**
+ * @swagger
+ * /api/users:
+ *   post:
+ *     summary: Create a new user
+ *     description: Create a new user
+ */
 router.post('/users', userController.createUser);
+/**
+ * @swagger
+ * /api/users/{uuid}:
+ *   put:
+ *     summary: Update an existing user
+ *     description: Update an existing user
+ */
+router.put('/users/:uuid', userController.updateUser);
+/**
+ * @swagger
+ * /api/users/{uuid}:
+ *   delete:
+ *     summary: Delete an existing user
+ *     description: Delete an existing user
+ */
+router.delete('/users/:uuid', userController.deleteUser);
 
 export default router;

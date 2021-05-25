@@ -6,20 +6,9 @@ Get all categories
 */
 const getCategories = async (req, res, next) => {
 	try {
-		// Get query parameters
-		const { itemsPerPage, currentPage } = req.query;
-
 		// Get categories from database
 		let categories = null;
-		if (itemsPerPage && currentPage) {
-			categories = await database.Category.findAll({
-				offset: (currentPage - 1) * itemsPerPage,
-				limit: itemsPerPage,
-			});
-			categories = convertArrayToPagedObject(categories, itemsPerPage, currentPage, await database.Category.count());
-		} else {
-			categories = await database.Category.findAll();
-		}
+			categories = await database.Category.findAll()
 
 		// Send response
 		res.status(200).json(categories);
@@ -27,6 +16,65 @@ const getCategories = async (req, res, next) => {
 		handleHTTPError(error, next);
 	}
 };
+
+/*
+Get all parent categories
+*/
+const getParentCategories = async (req, res, next) => {
+	try {
+		// Get categories from database
+		let categories = null;
+			categories = await database.Category.findAll({where: {parentId: null}})
+
+		// Send response
+		res.status(200).json(categories);
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
+};
+
+/*
+Get all sub categoriers by parent category Id  
+ */
+
+const getSubCategoriesByParentCategoryId = async (req, res, next) => {
+	try {
+		const { parentCategoryId } = req.params;
+		// Get categories from database
+		let categories = null;
+			categories = await database.Category.findAll({where: {parentId: parentCategoryId}})
+
+		// Send response
+		res.status(200).json(categories);
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
+};
+
+/**
+ Get parent category with it's child categories
+ */
+
+ const getSortedCategories = async (req, res, next) => {
+	 try {
+		const parentCategories = await database.Category.findAll({where: {parentId: null}});
+		const childCategories = await database.Category.findAll({where: {parentId: !null}});
+	
+		const categories = parentCategories.map(parent => {
+			const children = childCategories.filter(child => child.dataValues.parentId.includes(parent.dataValues.id))
+			
+			return {
+				...parent.dataValues,
+				children: [ ...children] 
+			}
+		})
+
+		//send response
+		res.status(200).json(categories)
+	 } catch(error) {
+		 handleHTTPError(error, next)
+	 }
+ }
 
 /*
 Get a specific category
@@ -123,5 +171,5 @@ const deleteCategory = async (req, res, next) => {
 };
 
 export {
-	createCategory, deleteCategory, getCategoryById, getCategories, updateCategory,
+	getSortedCategories, createCategory, deleteCategory, getCategoryById, getCategories, updateCategory,
 };

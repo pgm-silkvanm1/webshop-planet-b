@@ -46,9 +46,55 @@ Routes
  *                         type: string
  *                         description: The categories name.
  *                         example: Computers
+ *                      createdAt:
+ *                          type: date
+ *                          description: The date at wich the category was created
+ *                          example: 2021-05-24T20:18:50.847Z
+ *                      updatedAt:
+ *                          type: date
+ *                          description: The date at wich the category was created
+ *                          example: 2021-05-24T20:18:50.847Z        
+ *                      children:
+ *                          type: array
+ *                          items:
+ *                              type: object
+ *                              properties:
+ *                                  id:
+ *                                      type: integer
+ *                                      description: The category ID.
+ *                                      example: 1
+ *                                  name:
+ *                                  type: string
+ *                                  description: The categories name.
+ *                                  example: Computers
+ *                                  createdAt:
+ *                                      type: date
+ *                                      description: The date at wich the category was created
+ *                                      example: 2021-05-24T20:18:50.847Z
+ *                                  updatedAt:
+ *                                      type: date
+ *                                      description: The date at wich the category was created
+ *                                      example: 2021-05-24T20:18:50.847Z
+ *                                  
  */
-router.get('/categories', categoryController.getCategories);
+router.get('/categories', categoryController.getSortedCategories);
+/**
+ * @swagger
+ * /api/categories:
+ *   get:
+ *     summary: Get a specific category by Id
+ *     description: Get a specific category by Id
+ */
+
 router.get('/categories/:categoryId', categoryController.getCategoryById);
+/**
+ * @swagger
+ * /api/categories:
+ *   get:
+ *     summary: Get a specific existing category
+ *     description: Get a specific existing category
+ */
+router.post('/categories', categoryController.createCategory);
 /**
  * @swagger
  * /api/categories:
@@ -56,8 +102,14 @@ router.get('/categories/:categoryId', categoryController.getCategoryById);
  *     summary: Create a new category
  *     description: Create a new category
  */
-router.post('/categories', categoryController.createCategory);
 router.put('/categories/:categoryId', categoryController.updateCategory);
+/**
+ * @swagger
+ * /api/categories:
+ *   delete:
+ *     summary: Delete an existing category
+ *     description: Delete an existing category
+ */
 router.delete('/categories/:categoryId', categoryController.deleteCategory);
 
 router.get('/products', productController.getProducts);
@@ -78,34 +130,42 @@ router.delete('/products/:id', productController.deleteProduct);
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
+ *              type: object
+ *              properties:
  *                  data:
-*                       type: object
-*                       properties:
-*                           id:
-*                           type: integer
-*                           description: The user ID.
-*                           example: 1
-*                       uuid:
-*                           type: uuid
-*                           description: The user ID.
-*                           example: de0bd885-6c95-4828-927e-d205cbf843ad
-*                        email:
-*                           type: string
-*                           description: The user email address.
-*                           example: johndoe @ someone.com
-*                       password:
-*                           type: string
-*                           description: The user password.
-*                           example: mypassword
-*                       admin:
-*                          type: boolean
-*                          description: The user role.
-*                          example: false
-*/
+ *                       type: object
+ *                       properties:
+ *                           id:
+ *                           type: integer
+ *                           description: The user ID.
+ *                           example: 1
+ *                       uuid:
+ *                           type: uuid
+ *                           description: The user ID.
+ *                           example: de0bd885-6c95-4828-927e-d205cbf843ad
+ *                        email:
+ *                           type: string
+ *                           description: The user email address.
+ *                           example: johndoe @ someone.com
+ *                       password:
+ *                           type: string
+ *                           description: The user password.
+ *                           example: mypassword
+ *                       admin:
+ *                          type: boolean
+ *                          description: The user role.
+ *                          example: false
+ */
 router.get('/users', userController.getUsers);
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Get a specific user by user uuid
+ *     description: Get a specific user by user uuid
+ */
 router.get('/users/:uuid', userController.getUserByUuid);
+
 /**
  * @swagger
  * /api/users:
@@ -114,6 +174,7 @@ router.get('/users/:uuid', userController.getUserByUuid);
  *     description: Create a new user
  */
 router.post('/users', userController.createUser);
+
 /**
  * @swagger
  * /api/users/{uuid}:
@@ -122,6 +183,7 @@ router.post('/users', userController.createUser);
  *     description: Update an existing user
  */
 router.put('/users/:uuid', userController.updateUser);
+
 /**
  * @swagger
  * /api/users/{uuid}:

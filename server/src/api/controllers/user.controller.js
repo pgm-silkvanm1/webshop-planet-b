@@ -22,7 +22,7 @@ Get a specific user uuid
 */
 const getUserByUuid = async (req, res, next) => {
 	try {
-		// Get userId parameter
+		// Get user uuid parameter
 		const { uuid } = req.params;
 		// Get specific user from database
 		const user = await database.User.findOne({where: {uuid: uuid}});

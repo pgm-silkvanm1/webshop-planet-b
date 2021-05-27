@@ -1,6 +1,6 @@
 # My Walking App
 
-A landing page for a walking app made with [Eleventy](https://www.11ty.dev/).
+a webshop made with [Eleventy](https://www.11ty.dev/).
 ## Installation
 
 - `npm install`

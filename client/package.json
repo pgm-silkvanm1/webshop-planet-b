@@ -3,16 +3,17 @@
   "version": "1.0.0",
   "description": "ecological webshop",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+  "dependencies": {
     "npm-run-all": "^4.1.5"
   },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1"
+  },
   "scripts": {
-    "eleventy": "npx eleventy",
+    "eleventy": "npx @11ty/eleventy",
     "sass": "sass --style=compressed src/style/main.scss _site/style.css",
     "watch:sass": "npm run sass -- --watch",
-    "watch:eleventy": "npx eleventy --serve",
+    "watch:eleventy": "eleventy --serve",
     "start": "npm-run-all sass --parallel watch:*",
     "build": "npm run eleventy && npm run sass"
   },

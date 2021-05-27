@@ -1,11 +1,12 @@
 footer{
-    background: $blueish;
+    background: $gray;
+    font-family: 'Poppins', sans-serif;
   
     .container-footer{
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        color: whitesmoke;
+        color: $greenish;
 
         li{
             padding-bottom: 0.5rem;
@@ -19,7 +20,7 @@ footer{
         }
         a{
             text-decoration: none;
-            color: whitesmoke;
+            color: $greenish;
         }
 
         a:hover{
@@ -48,38 +49,40 @@ footer{
             padding-left: 1rem;
           }
 
-          svg{
+        svg{
             width: 3rem;
             height: 3rem;
             fill: white;
             padding: 0.3rem;
-          }
-          
-          svg:hover{
-              fill: $beige;
-              transition: 0.2s all ease;
-          }
-              
+        }
         
+        svg:hover{
+            fill: $beige;
+            transition: 0.2s all ease;
+        }
 
-      }
-   
-     
-        
-    .footer__black{
-    background-color: black;
-    color: white;
-    margin: 0;
-    padding: 1.5rem;
-    text-align: center;
-    font-size: 1rem;
     }
+   
+    
+    .footer__orange{
+        background-color: $beige;
+        color: white;
+        margin: 0;
+        padding: 0.5rem;
+        font-size: 0.7rem;
 
+        &__list {
+            display: flex;
+            justify-content: space-around;
+            width: 40%;
+            margin: 0 auto;
 
-
-      
-        
-  }
+            li {
+                list-style: none;
+            }
+        }
+    }    
+}
   
  
   

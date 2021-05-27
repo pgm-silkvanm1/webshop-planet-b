@@ -11,10 +11,11 @@ export default (sequelize) => {
 		{	
 			name: {
 				type: DataTypes.STRING,
+				unique: true,
 				allowNull: false
 			},
 			parentId: {
-				type: DataTypes.STRING
+				type: DataTypes.INTEGER
 			},
 		},
 		{

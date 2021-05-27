@@ -18,17 +18,17 @@ const getUsers = async (req, res, next) => {
 };
 
 /*
-Get a specific user
+Get a specific user uuid
 */
 const getUserByUuid = async (req, res, next) => {
 	try {
-		// Get userId parameter
-		const { userUuid } = req.params;
+		// Get user uuid parameter
+		const { uuid } = req.params;
 		// Get specific user from database
-		const user = await database.User.findOne({where: {userUuid: userUuid}});
+		const user = await database.User.findOne({where: {uuid: uuid}});
 
 		if (user === null) {
-			throw new HTTPError(`Could not found the user with id ${userUuid}!`, 404);
+			throw new HTTPError(`Could not found the user with id ${uuid}!`, 404);
 		}
 		// Send response
 		res.status(200).json(user);
@@ -58,21 +58,21 @@ Update an exisiting user
 */
 const updateUser = async (req, res, next) => {
 	try {
-		// Get userUuid parameter
-		const { userUuid } = req.params;
-		console.log(userUuid);
+		// Get uuid parameter
+		const { uuid } = req.params;
+		console.log(uuid);
 		// Get specific user from database
-		const user = await database.User.findOne({where: { userUuid: userUuid }});
+		const user = await database.User.findOne({where: { uuid: uuid }});
 
 		if (user === null) {
-			throw new HTTPError(`Could not found the user with id ${userUuid}!`, 404);
+			throw new HTTPError(`Could not found the user with id ${uuid}!`, 404);
 		}
 
 		// Update a specific user
 		const model = req.body;
 		const updatedUser = await database.User.update(model, {
 			where: {
-				userUuid: userUuid,
+				uuid: uuid,
 			},
 		});
 
@@ -88,19 +88,19 @@ Delete an exisiting user
 */
 const deleteUser = async (req, res, next) => {
 	try {
-		// Get userUuid parameter
-		const { userUuid } = req.params;
+		// Get uuid parameter
+		const { uuid } = req.params;
 		// Get specific user from database
-		const user = await database.User.findOne({where: {userUuid: userUuid}});
+		const user = await database.User.findOne({where: {uuid: uuid}});
 
 		if (user === null) {
-			throw new HTTPError(`Could not found the user with id ${userUuid}!`, 404);
+			throw new HTTPError(`Could not found the user with id ${uuid}!`, 404);
 		}
 
 		// Delete a user with specified id
 		const message = await database.User.destroy({
 			where: {
-				id: userUuid,
+				id: uuid,
 			},
 		});
 

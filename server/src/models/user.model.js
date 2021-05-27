@@ -3,14 +3,18 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class User extends Model {
 		static associate(models) {
-		}
-	}
+		};
+		toJSON(){
+			return { ...this.get(), id: undefined };
+		};
+	};
 
 	User.init(
 		{
-			userUuid: {
+			uuid: {
 				type: DataTypes.UUID, 
-				defaultValue: DataTypes.UUIDV4
+				defaultValue: DataTypes.UUIDV4,
+				unique: true,
 			},
 			password: {
 				type: DataTypes.STRING, 
@@ -18,10 +22,12 @@ export default (sequelize) => {
 			},
       		email: {
 				  type: DataTypes.STRING, 
-				  allowNull: false
+				  allowNull: false,
+				  unique: true
 				},
 			admin : {
-				type: DataTypes.BOOLEAN, 
+				type: DataTypes.BOOLEAN,
+				defaultValue: false, 
 				allowNull: false
 			},
 		},

@@ -1,4 +1,4 @@
-# My Walking App
+# Plan(et) B
 
 a webshop made with [Eleventy](https://www.11ty.dev/).
 ## Installation

@@ -1,16 +1,11 @@
 {
-  "name": "client",
+  "name": "my-walking-app",
   "version": "1.0.0",
-  "description": "ecological webshop",
+  "description": "A simple landing page made with Eleventy",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "npm-run-all": "^4.1.5"
-  },
   "scripts": {
     "eleventy": "npx eleventy",
-    "sass": "sass --style=compressed src/style/main.scss _site/style.css",
+    "sass": "sass --style=compressed src/style/main.scss src/main.css",
     "watch:sass": "npm run sass -- --watch",
     "watch:eleventy": "npx eleventy --serve",
     "start": "npm-run-all sass --parallel watch:*",
@@ -18,17 +13,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pgmgent-pgm-4/webshop-planet-b.git"
+    "url": "https://github.com/pgm-minajaid"
   },
   "keywords": [
-    "webshop",
-    "eleventy",
-    "eco"
+    "Walking",
+    "Eleventy"
   ],
-  "author": "Mina Jaidane, Bram Vandenbussche, Silke Van Meerbeek",
+  "author": "Mina Jaidane",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pgmgent-pgm-4/webshop-planet-b/issues"
+    "url": "https://github.com/pgm-minajaid"
   },
-  "homepage": "https://github.com/pgmgent-pgm-4/webshop-planet-b#readme"
+  "homepage": "https://github.com/pgm-minajaid",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-navigation": "^0.1.6",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {}
 }

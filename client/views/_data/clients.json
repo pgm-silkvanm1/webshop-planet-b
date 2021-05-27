@@ -1,0 +1,28 @@
+[
+    {
+        "img": "assets/img/andy.jpg",
+        "quote" : "Wow the walk was really good! not too many people :)",
+        "client" : "Carter Williams",
+        "function": "CEO of Microsoft "
+    },
+    {
+        "img": "assets/img/tanya.jpg",
+        "quote" : "The walking route was as described. A pleasant walk.",
+        "client" : "Tanya Rodriguez",
+        "function": "Occupational Therapists"
+    },  
+    {
+        "img": "assets/img/darell.jpg",
+        "quote" : "A pleasant hiking app, not once did I get lost!",
+        "client" : "Darrell Palmer",
+        "function": "Medical Appliance Technicians"
+    },  
+    {
+        "img": "assets/img/alex.jpg",
+        "quote" : "Clear description, nice that the app keeps track of your activities",
+        "client" : "Alexander Barrett",
+        "function": "Physical Therapists"
+    }
+    
+    
+    ]

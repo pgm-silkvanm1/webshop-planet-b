@@ -1,0 +1,35 @@
+.btn {
+    &--primary {
+        border: none;
+        background-color: red;
+    }
+}
+
+
+.to-top{
+    color: black;
+    background-image: url("/assets/img/arrow-up.svg");
+    background-repeat: no-repeat;
+    background-position-x: right;
+    position: fixed;
+    font-size: 2rem;
+    text-decoration: underline;
+    bottom:100px;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background-color:transparent;
+    border: none;
+  
+}
+
+.to-top:focus{
+    outline:none;
+    
+}
+
+
+

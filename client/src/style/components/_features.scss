@@ -1,0 +1,48 @@
+.container__features{
+    
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+ 
+
+    div{
+        padding: 1rem
+    }
+    h1{
+        text-align: center;
+    }
+    svg{
+        width: 3rem;
+        display: flex;
+        align-items:  center;
+        margin: 0 auto;
+    }
+
+    button{
+        background: $beige;
+        border-radius: 2rem;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 16rem;
+        padding: 1rem;
+        margin: 0 auto;
+        border: none;
+        cursor: pointer;
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+    }
+
+    button:hover{
+        background: $greenish;
+        transition: all ease 0.3s;
+    }
+    
+    a:hover{
+        color: $whitish;
+    }
+    
+  
+}

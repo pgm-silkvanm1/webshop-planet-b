@@ -1,0 +1,31 @@
+.img__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        margin: 1rem;
+        width: 22rem;
+    }
+}
+
+.information__article{
+    display: flex;
+    justify-content: space-between;
+}
+
+.list__articles{
+    list-style-type: none;
+    padding: 0;
+
+    a{
+        text-decoration: none;
+        color: $blueish;
+    }
+
+    a:hover{
+        color: $whitish;
+        transition: all ease 0.2s;
+    }
+ 
+}
+

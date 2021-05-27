@@ -1,0 +1,34 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "ecological webshop",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "npm-run-all": "^4.1.5"
+  },
+  "scripts": {
+    "eleventy": "npx eleventy",
+    "sass": "sass --style=compressed src/style/main.scss _site/style.css",
+    "watch:sass": "npm run sass -- --watch",
+    "watch:eleventy": "npx eleventy --serve",
+    "start": "npm-run-all sass --parallel watch:*",
+    "build": "npm run eleventy && npm run sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pgmgent-pgm-4/webshop-planet-b.git"
+  },
+  "keywords": [
+    "webshop",
+    "eleventy",
+    "eco"
+  ],
+  "author": "Mina Jaidane, Bram Vandenbussche, Silke Van Meerbeek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pgmgent-pgm-4/webshop-planet-b/issues"
+  },
+  "homepage": "https://github.com/pgmgent-pgm-4/webshop-planet-b#readme"
+}

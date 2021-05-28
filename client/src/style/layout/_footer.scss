@@ -13,9 +13,10 @@ footer{
             list-style-type: none;
         }
         h1{
-            padding: 1rem;
-            margin: 0rem;
-            font-weight: bold;
+            padding: 0;
+            margin-bottom: 0.3rem;
+            font-weight: 400;
+       
     
         }
         a{
@@ -29,7 +30,7 @@ footer{
         }
       
         .extra-links{
-            padding-left: 1rem;
+            padding: 0;
         }
            
         
@@ -45,15 +46,15 @@ footer{
         }
         .container__links{
             display: flex;
-            margin: 0rem;
-            padding-left: 1rem;
+            margin: 0;
+            padding: 0;
           }
 
         svg{
             width: 3rem;
             height: 3rem;
             fill: white;
-            padding: 0.3rem;
+            padding-right: 0.3rem;
         }
         
         svg:hover{

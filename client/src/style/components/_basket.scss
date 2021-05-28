@@ -1,0 +1,83 @@
+.basket__popup{
+    display: none;
+ 
+
+
+}
+
+.basket__popup.open{
+    position: fixed;
+    display: block;
+    padding: 1rem;
+    top: 0;
+    right: 0;
+    width: 25rem;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 20px 20px 5px 2000px rgba(0,0,0,0.75);
+    .basket__close__style{
+        width: 2rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        margin-right: 0;
+        padding: 1rem;
+    }
+    h1{
+        display: flex;
+        justify-content: center;
+        color: $beige;
+    }
+    .basket__item{
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        h4{
+            margin: 0;
+        }
+        img{
+            width: 7rem;
+        }
+        p{
+            font-size: 0.7rem;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.basket__total{
+    margin-top: 25%;
+    border-top: 1px solid black;
+    font-family: 'Poppins',sans-serif;
+    &--details{
+        display: flex;
+        justify-content: space-between;
+    }
+    .basket__button{
+        margin-top: 3rem;
+    
+        button{
+            background:none;
+            border: 1px solid black;
+            padding: 0.6rem;
+            font-family: 'Poppins';
+            cursor: pointer;
+    
+        }
+        .yellow{
+            background: $CTA1;
+        }
+
+        .purple{
+            background: $CTA2;
+        }
+    }
+
+  
+
+}

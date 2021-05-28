@@ -1,3 +1,12 @@
+header{
+  img{
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -5,22 +14,76 @@ nav {
   margin: 0 2rem;
   width: 90%;
   max-width: 100%;
-  img{
-      width: 10rem;
-  }
+ 
   ul {
     margin: 0;
     padding: 0;
     display: flex;
   }
 
-  li { display: inline-block; }
+  li { 
+    display: inline-block; 
+    font-size: 2rem;
+  }
 
   a {
-    display: block;
-    padding: 6px 12px;
+     padding: 6px 12px;
     text-decoration: none;
     color: $font-color;
     font-weight: bold;
   }
+}
+
+
+.nav__practical{
+  display: flex;
+  align-items: center;
+
+  form{
+    border: 1px solid rgba(0, 0, 0, 0.322);
+    display: flex;
+    align-items: baseline;
+    padding: 0.2rem;
+  }
+ &__form{
+  
+ 
+  &--text{
+    height: 2rem;
+    border: none;
+    font-size: 1rem;
+  }
+   &--icon{
+    height: 2rem;
+    width: 2.5rem;
+    background-image: url("https://image.flaticon.com/icons/png/512/622/622669.png");
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    border: none;
+    background-position: center;
+    background-color: white;
+    
+     
+   }
+  
+ }
+ &__icons{
+   display: flex;
+   justify-content: space-between;
+   align-items: baseline;
+   svg{
+     padding: 0.3rem;
+     width: 2rem;
+   }
+
+ }
+
+}
+
+.basket__icon{
+  cursor: pointer;
+}
+
+.basket__close{
+  cursor: pointer;
 }

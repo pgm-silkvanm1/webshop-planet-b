@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet"></head>
 <body>
     
-        <header>
+        <header class = "container">
 
         <a href="/index.html"><img src="/assets/img/logo.png"/></a>
 
@@ -19,16 +19,16 @@
         <nav>
           <ul class = "nav__list">
                  <ul><li><a href="/">Home</a></li>
-<li class="extra-menu"><a href="/Storage/">Storage</a><ul><li><a href="/Storage/kitchen/">Kitchen</a></li>
-<li><a href="/Storage/office/">Office & Desk</a></li>
-<li><a href="/Storage/closet/">Closet</a></li></ul></li>
+<li class="extra-menu"><a href="/storage/">Storage</a><ul><li><a href="/storage/kitchen/">Kitchen</a></li>
+<li><a href="/storage/office/">Office & Desk</a></li>
+<li><a href="/storage/closet/">Closet</a></li></ul></li>
 <li class="extra-menu"><a href="/cleaning/">Cleaning</a><ul><li><a href="/cleaning/bathroom/">Bathroom</a></li>
 <li><a href="/cleaning/floor/">Floor</a></li></ul></li>
-<li><a href="/PersonalCare/">Personal Care</a></li>
+<li><a href="/personalcare/">Personal Care</a></li>
 <li class="extra-menu"><a href="/kids/">Kids</a><ul><li><a href="/kids/athome/">Home</a></li>
+<li><a href="/kids/fooddrinks/">Food & Drinks</a></li>
 <li><a href="/kids/clothing/">Clothing</a></li>
-<li><a href="/kids/daipers/">Daipers</a></li>
-<li><a href="/kids/fooddrinks/">Food & Drinks</a></li></ul></li></ul>
+<li><a href="/kids/daipers/">Daipers</a></li></ul></li></ul>
             </ul>
 
             <div class="small__menu">
@@ -36,6 +36,11 @@
             </div>
 
             <div class = "nav__practical">
+
+              <form>
+                    <input type="text" placeholder="Search" class="nav__practical__form--text">
+                        <input type="submit" placeholder="" value=" " class="nav__practical__form--icon">
+                </form>
 
                 <div class="nav__practical__icons">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38.382" height="40.652" viewBox="0 0 38.382 40.652">
@@ -74,7 +79,7 @@
                     </div>
                      <section class="basket__popup">
 
-<img src="https://image.flaticon.com/icons/png/512/1828/1828778.png " class="basket__close__style basket__close"/>
+<img class="basket__close__style basket__close" src="https://image.flaticon.com/icons/png/512/1828/1828778.png " />
 
 <h1>Shopping Basket</h1>
 
@@ -151,8 +156,8 @@
 
     <div class="basket__button">
     
-        <button class="basket__close yellow">Continue Shopping</button>
-        <a href="./payement/index.html"><button class="purple">Go to payement</button></a>
+        <button class="basket__continue yellow">Continue Shopping</button>
+        <a href="/payement/index.html"><button class="purple">Go to payement</button></a>
 
 
     </div>
@@ -164,10 +169,7 @@
                 </div>
             
 
-                <form>
-                    <input type="text" placeholder="Search" class="nav__practical__form--text">
-                        <input type="submit" placeholder="" value=" " class="nav__practical__form--icon">
-                </form>
+              
 
             </div>
 
@@ -231,7 +233,7 @@
             <h1>More information</h1>
                 <ul class ="extra-links">
                     <li>
-                        <a href="./ourStory">Our Story</a> 
+                        <a href="/ourStory">Our Story</a> 
                     </li>
                     <li>
                         <a href="#">Become a partner</a>

@@ -1,9 +1,15 @@
-.btn {
-    &--primary {
-        border: none;
-        background-color: red;
-    }
+
+
+.CTA__button{
+    background-color: #f3c13b;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+    padding: 0.4rem 1.5rem;
+    cursor: pointer;
 }
+
 
 
 .to-top{

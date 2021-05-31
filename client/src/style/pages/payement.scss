@@ -1,0 +1,54 @@
+.payement__details{
+    border-bottom: 1px solid #000;
+    font-family:"Poppins",sans-serif;
+    font-weight: 400;
+
+}
+form{
+    label{
+        padding: 0 0.5rem;
+    }
+
+    .payement__name{
+        display: flex;
+        justify-content: space-between;
+        margin: 0.6rem 0;
+
+      
+        input{
+            width: 100%;
+
+        }
+    }
+
+    .payement__email{
+        margin: 0.6rem 0;
+
+        input{
+            width: 85%;
+        }
+    }
+  
+
+}
+
+.ship__information{
+    display: flex;
+    margin: 0.6rem 0;
+    
+}
+
+.ship__long{
+        width: 70%;
+
+}
+
+.ship__short{
+        width: 30%;
+
+}
+
+.CTA__button.buy{
+    padding: 0.5rem 10rem;
+}
+

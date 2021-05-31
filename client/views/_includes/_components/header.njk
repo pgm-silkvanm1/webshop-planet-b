@@ -11,13 +11,11 @@
                  }) | safe }}
             </ul>
 
-            <div class = "nav__practical">
+            <div class="small__menu">
+                <svg class="nav__hamburger" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 24h-19A2.503 2.503 0 010 21.5v-19C0 1.122 1.121 0 2.5 0h19C22.879 0 24 1.122 24 2.5v19c0 1.378-1.121 2.5-2.5 2.5zM2.5 1C1.673 1 1 1.673 1 2.5v19c0 .827.673 1.5 1.5 1.5h19c.827 0 1.5-.673 1.5-1.5v-19c0-.827-.673-1.5-1.5-1.5z"/><path d="M16.5 8h-9a.5.5 0 010-1h9a.5.5 0 010 1zM16.5 12.5h-9a.5.5 0 010-1h9a.5.5 0 010 1zM16.5 17h-9a.5.5 0 010-1h9a.5.5 0 010 1z"/></svg>
+            </div>
 
-            <form>
-                <input type="text" placeholder="Search" class="nav__practical__form--text">
-                <input type="submit" placeholder="" value=" " class="nav__practical__form--icon">
-            </form>
-            
+            <div class = "nav__practical">
 
                 <div class="nav__practical__icons">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38.382" height="40.652" viewBox="0 0 38.382 40.652">
@@ -49,15 +47,24 @@
                     </g>
                     </svg>
 
-                    <div class="basket__icon"><svg id="shopping-basket" xmlns="http://www.w3.org/2000/svg" width="46.824" height="41.708" viewBox="0 0 46.824 41.708">
-                    <path id="shopping-basket-2" data-name="shopping-basket" d="M44.2,41.075H39.466L32.88,28.636a1.375,1.375,0,0,0-2.431,1.287l5.9,11.153H10.462l5.9-11.153a1.375,1.375,0,0,0-2.431-1.287L7.35,41.075H2.627A2.63,2.63,0,0,0,0,43.7v3.055a2.63,2.63,0,0,0,2.446,2.62L7.059,68.558A1.375,1.375,0,0,0,8.4,69.612H38.419a1.375,1.375,0,0,0,1.337-1.053L44.38,49.377a2.63,2.63,0,0,0,2.444-2.62V43.7A2.63,2.63,0,0,0,44.2,41.075ZM2.75,43.826H44.074v2.808H2.75ZM39.775,56.743H33.754l.919-7.359h6.876ZM24.789,66.861V59.493h5.85l-.92,7.368Zm-7.68,0-.921-7.368h5.851v7.368ZM5.276,49.384h6.877l.92,7.359H7.046Zm9.648,0h7.114v7.359H15.844Zm9.865,7.359V49.384H31.9l-.919,7.359ZM7.708,59.493h5.708l.921,7.368H9.48Zm29.628,7.368H32.491l.92-7.368h5.7Z" transform="translate(0 -27.904)" fill="#aa9db1"/>
-                    </svg></div>
-
-                    {% include "./basket.njk" %}
-
+                    <div class="basket__icon">
+                        <svg id="shopping-basket" xmlns="http://www.w3.org/2000/svg" width="46.824" height="41.708" viewBox="0 0 46.824 41.708">
+                        <path id="shopping-basket-2" data-name="shopping-basket" d="M44.2,41.075H39.466L32.88,28.636a1.375,1.375,0,0,0-2.431,1.287l5.9,11.153H10.462l5.9-11.153a1.375,1.375,0,0,0-2.431-1.287L7.35,41.075H2.627A2.63,2.63,0,0,0,0,43.7v3.055a2.63,2.63,0,0,0,2.446,2.62L7.059,68.558A1.375,1.375,0,0,0,8.4,69.612H38.419a1.375,1.375,0,0,0,1.337-1.053L44.38,49.377a2.63,2.63,0,0,0,2.444-2.62V43.7A2.63,2.63,0,0,0,44.2,41.075ZM2.75,43.826H44.074v2.808H2.75ZM39.775,56.743H33.754l.919-7.359h6.876ZM24.789,66.861V59.493h5.85l-.92,7.368Zm-7.68,0-.921-7.368h5.851v7.368ZM5.276,49.384h6.877l.92,7.359H7.046Zm9.648,0h7.114v7.359H15.844Zm9.865,7.359V49.384H31.9l-.919,7.359ZM7.708,59.493h5.708l.921,7.368H9.48Zm29.628,7.368H32.491l.92-7.368h5.7Z" transform="translate(0 -27.904)" fill="#aa9db1"/>
+                        </svg>
+                    </div>
+                     {% include "./basket.njk" %}
 
                 </div>
+            
+
+                <form>
+                    <input type="text" placeholder="Search" class="nav__practical__form--text">
+                        <input type="submit" placeholder="" value=" " class="nav__practical__form--icon">
+                </form>
+
             </div>
+
+               
         </nav>
 
         </header>

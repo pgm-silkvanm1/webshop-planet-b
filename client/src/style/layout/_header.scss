@@ -34,6 +34,12 @@ nav {
   }
 }
 
+nav a:hover{
+  color: $beige;
+  transition: all ease 0.2s;
+
+}
+
 
 .nav__practical{
   display: flex;
@@ -86,4 +92,23 @@ nav {
 
 .basket__close{
   cursor: pointer;
+}
+
+.extra-menu ul{
+  display: flex;
+  flex-direction: column;
+  li{
+    font-size: 1rem;
+  }
+  
+}
+
+
+.extra-menu li{
+  transition: all ease 0.1s;
+  opacity: 0;
+}
+
+nav li:hover li{
+  opacity: 1;
 }

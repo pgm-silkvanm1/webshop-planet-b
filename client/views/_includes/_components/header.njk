@@ -7,7 +7,7 @@
         <nav>
           <ul class = "nav__list">
                  {{ collections.all | eleventyNavigation | eleventyNavigationToHtml({
-                        listItemClass:"index-{{ key }}"
+                         listItemHasChildrenClass:"extra-menu"
                  }) | safe }}
             </ul>
 

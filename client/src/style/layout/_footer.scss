@@ -1,6 +1,28 @@
 footer{
     background: $gray;
     font-family: 'Poppins', sans-serif;
+
+    .payments{
+        background-color: white;
+        margin: 0;
+        border-top: 1px solid black;
+
+        &__list {
+            display: flex;
+            justify-content: space-between;
+            width: 45%;
+            margin: 0 auto;
+
+            li {
+                list-style: none;
+            }
+
+            .payments-logo {
+                width: 5rem;
+                height: 5rem;
+            }
+        }
+    }
   
     .container-footer{
         display: flex;

@@ -3,17 +3,20 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class User extends Model {
 		static associate(models) {
-		};
-		toJSON(){
-			return { ...this.get(), id: undefined };
+			this.hasOne(models.Profile, {
+				foreignKey: 'userId',
+				as: 'profile'
+			});
 		};
 	};
 
 	User.init(
 		{
-			uuid: {
-				type: DataTypes.UUID, 
+			id: {
+				primaryKey: true,
+				type: DataTypes.UUIDV4, 
 				defaultValue: DataTypes.UUIDV4,
+				allowNull: false,
 				unique: true,
 			},
 			password: {

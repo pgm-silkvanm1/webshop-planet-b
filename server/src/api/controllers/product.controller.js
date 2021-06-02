@@ -2,13 +2,23 @@ import { handleHTTPError, HTTPError } from '../../utils';
 import database from '../../database';
 
 /*
-Get all users
+Get all products
 */
 const getProducts = async (req, res, next) => {
 	try {
 		// Get users from database
 		let products = null;		
-        products = await database.Product.findAll();
+        products = await database.Product.findAll({
+			include: [
+				{
+					model: database.Category,
+					as: 'categories',
+					attributes:['id', 'parentId', 'name'],
+					through: { attributes: [] },
+					unique: false
+				}
+			]
+		});
 
 		// Send response
 		res.status(200).json(products);
@@ -18,14 +28,15 @@ const getProducts = async (req, res, next) => {
 };
 
 /*
-Get a specific user uuid
+Get a specific product by id
 */
 const getProductById = async (req, res, next) => {
 	try {
 		// Get userId parameter
 		const { id } = req.params;
+		console.log(id)
 		// Get specific user from database
-		const product = await database.User.findByPK(id);
+		const product = await database.Product.findByPK(id);
 
 		if (product === null) {
 			throw new HTTPError(`Could not found the product with id ${id}!`, 404);
@@ -38,7 +49,7 @@ const getProductById = async (req, res, next) => {
 };
 
 /*
-Create a new user
+Create a new product
 */
 const createProduct = async (req, res, next) => {
 	try {

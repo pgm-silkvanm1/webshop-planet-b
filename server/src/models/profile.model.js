@@ -3,15 +3,12 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class Profile extends Model {
 		static associate(models) {
+			this.belongsTo(models.User, { foreignKey: 'userId' })
 		}
 	}
 
 	Profile.init(
 		{
-            userId: {
-				type: DataTypes.STRING, 
-				allowNull: false
-			},
             firstName: {
 				type: DataTypes.STRING, 
 				allowNull: false

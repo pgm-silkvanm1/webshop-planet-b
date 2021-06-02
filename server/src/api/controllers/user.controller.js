@@ -8,7 +8,9 @@ const getUsers = async (req, res, next) => {
 	try {
 		// Get users from database
 		let users = null;		
-        users = await database.User.findAll();
+        users = await database.User.findAll({
+			include: database.Profile
+		});
 
 		// Send response
 		res.status(200).json(users);
@@ -18,17 +20,17 @@ const getUsers = async (req, res, next) => {
 };
 
 /*
-Get a specific user uuid
+Get a specific user id
 */
-const getUserByUuid = async (req, res, next) => {
+const getUserById = async (req, res, next) => {
 	try {
-		// Get user uuid parameter
-		const { uuid } = req.params;
+		// Get user id parameter
+		const { id } = req.params;
 		// Get specific user from database
-		const user = await database.User.findOne({where: {uuid: uuid}});
+		const user = await database.User.findOne({where: {id: id}});
 
 		if (user === null) {
-			throw new HTTPError(`Could not found the user with id ${uuid}!`, 404);
+			throw new HTTPError(`Could not found the user with id ${id}!`, 404);
 		}
 		// Send response
 		res.status(200).json(user);
@@ -58,21 +60,21 @@ Update an exisiting user
 */
 const updateUser = async (req, res, next) => {
 	try {
-		// Get uuid parameter
-		const { uuid } = req.params;
-		console.log(uuid);
+		// Get id parameter
+		const { id } = req.params;
+		console.log(id);
 		// Get specific user from database
-		const user = await database.User.findOne({where: { uuid: uuid }});
+		const user = await database.User.findOne({where: { id: id }});
 
 		if (user === null) {
-			throw new HTTPError(`Could not found the user with id ${uuid}!`, 404);
+			throw new HTTPError(`Could not found the user with id ${id}!`, 404);
 		}
 
 		// Update a specific user
 		const model = req.body;
 		const updatedUser = await database.User.update(model, {
 			where: {
-				uuid: uuid,
+				id: id,
 			},
 		});
 
@@ -88,19 +90,19 @@ Delete an exisiting user
 */
 const deleteUser = async (req, res, next) => {
 	try {
-		// Get uuid parameter
-		const { uuid } = req.params;
+		// Get id parameter
+		const { id } = req.params;
 		// Get specific user from database
-		const user = await database.User.findOne({where: {uuid: uuid}});
+		const user = await database.User.findOne({where: {id: id}});
 
 		if (user === null) {
-			throw new HTTPError(`Could not found the user with id ${uuid}!`, 404);
+			throw new HTTPError(`Could not found the user with id ${id}!`, 404);
 		}
 
 		// Delete a user with specified id
 		const message = await database.User.destroy({
 			where: {
-				id: uuid,
+				id: id,
 			},
 		});
 
@@ -112,5 +114,5 @@ const deleteUser = async (req, res, next) => {
 };
 
 export {
-	getUsers, createUser, updateUser, getUserByUuid, deleteUser
+	getUsers, createUser, updateUser, getUserById, deleteUser
 };

@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet"></head>
 <body>
     
-        <header class = "container">
+        <header>
 
         <a href="/index.html"><img src="/assets/img/logo.png"/></a>
 
@@ -19,16 +19,16 @@
         <nav>
           <ul class = "nav__list">
                  <ul><li><a href="/">Home</a></li>
-<li class="extra-menu"><a href="/storage/">Storage</a><ul><li><a href="/storage/kitchen/">Kitchen</a></li>
-<li><a href="/storage/office/">Office & Desk</a></li>
-<li><a href="/storage/closet/">Closet</a></li></ul></li>
+<li class="extra-menu"><a href="/Storage/">Storage</a><ul><li><a href="/Storage/kitchen/">Kitchen</a></li>
+<li><a href="/Storage/office/">Office & Desk</a></li>
+<li><a href="/Storage/closet/">Closet</a></li></ul></li>
 <li class="extra-menu"><a href="/cleaning/">Cleaning</a><ul><li><a href="/cleaning/bathroom/">Bathroom</a></li>
 <li><a href="/cleaning/floor/">Floor</a></li></ul></li>
-<li><a href="/personalcare/">Personal Care</a></li>
+<li><a href="/PersonalCare/">Personal Care</a></li>
 <li class="extra-menu"><a href="/kids/">Kids</a><ul><li><a href="/kids/athome/">Home</a></li>
-<li><a href="/kids/fooddrinks/">Food & Drinks</a></li>
 <li><a href="/kids/clothing/">Clothing</a></li>
-<li><a href="/kids/daipers/">Daipers</a></li></ul></li></ul>
+<li><a href="/kids/daipers/">Daipers</a></li>
+<li><a href="/kids/fooddrinks/">Food & Drinks</a></li></ul></li></ul>
             </ul>
 
             <div class="small__menu">
@@ -36,11 +36,6 @@
             </div>
 
             <div class = "nav__practical">
-
-              <form>
-                    <input type="text" placeholder="Search" class="nav__practical__form--text">
-                        <input type="submit" placeholder="" value=" " class="nav__practical__form--icon">
-                </form>
 
                 <div class="nav__practical__icons">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38.382" height="40.652" viewBox="0 0 38.382 40.652">
@@ -79,7 +74,7 @@
                     </div>
                      <section class="basket__popup">
 
-<img class="basket__close__style basket__close" src="https://image.flaticon.com/icons/png/512/1828/1828778.png " />
+<img src="https://image.flaticon.com/icons/png/512/1828/1828778.png " class="basket__close__style basket__close"/>
 
 <h1>Shopping Basket</h1>
 
@@ -156,8 +151,8 @@
 
     <div class="basket__button">
     
-        <button class="basket__continue yellow">Continue Shopping</button>
-        <a href="/payement/index.html"><button class="purple">Go to payement</button></a>
+        <button class="basket__close yellow">Continue Shopping</button>
+        <a href="./payement/index.html"><button class="purple">Go to payement</button></a>
 
 
     </div>
@@ -169,7 +164,10 @@
                 </div>
             
 
-              
+                <form>
+                    <input type="text" placeholder="Search" class="nav__practical__form--text">
+                        <input type="submit" placeholder="" value=" " class="nav__practical__form--icon">
+                </form>
 
             </div>
 
@@ -181,43 +179,76 @@
 
     <main>
         
+<div class="contact-us">
+    <h1>Contact us</h1>
 
-<div class="hero__feature">
-    <img src="/assets/img/hikeyou1.jpeg"/>
-    <img src="/assets/img/hikeyou2.jpeg"/>
-    <img src="/assets/img/hikeyou3.jpeg"/>
-</div>
-
-
-<div class="container"> 
-    <h1 class="title__feature">It all starts with a little inspiration</h1>
-
-        <p>
-            Hike You has everything you need to discover more of the world. From carefully selected guides to the world's most epic outdoor experiences, to ready-made routes near you - Hike You helps you find your perfect adventure. Whether you start in a remote mountain range, or in your own backyard.
-        </p>
-
-</div>
-
-
-<div class="container container__feature background__red" id="walks">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 409.6 409.6"><path d="M392.533 187.733H17.067C7.641 187.733 0 195.374 0 204.8s7.641 17.067 17.067 17.067h375.467c9.426 0 17.067-7.641 17.067-17.067s-7.642-17.067-17.068-17.067z"/></svg>
-    <h2>Save your favorite walks!</h2>
-        <p>
-            Take photos of the best moments of your adventure and let the world know that your place is a must-see. Each time you save a highlight, it will appear on the Tour Planner as a place worth checking out.
-        </p>
-
-    <div class ="container__feature__images">
-        <img src = "/assets/img/savewalks1.jpg"/>
-        <img src = "/assets/img/savewalks2.jpg"/>
-        <img src = "/assets/img/savewalks3.jpg"/>
+    
+    <div class="stores">
         
+        <div class="stores__list">
+            <h3>Visit one of our stores</h3>
+            <form>
+                <input type="submit" placeholder="" value=" " class="stores__list__form--icon">
+                <input type="text" placeholder="Search" class="stores__list__form--text">
+            </form>
+            <div class="opening-hours">
+                <p>
+                Open now
+                </p>
+                <p>
+                After 19h
+                </p>
+                <p>
+                After 20h
+                </p>
+            </div>
+        </div>
+        <div class="stores__map">
+        <h3>map</h3>
+        <img src="/assets/img/map.png" alt="map of the stores">
+        </div>
     </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 409.6 409.6"><path d="M392.533 187.733H17.067C7.641 187.733 0 195.374 0 204.8s7.641 17.067 17.067 17.067h375.467c9.426 0 17.067-7.641 17.067-17.067s-7.642-17.067-17.068-17.067z"/></svg>
+    <div class="intouch">
+        <div class="message">
+            <h3>Send us a message</h3>
+            <h5>Subject</h5>
+            <form>
+                <input type="text" placeholder="The received product is faulty" class="message__form--text">
+                <input type="submit" placeholder="" value=" " class="message__form--icon">
+            </form> 
+            <h5>Email</h5>
+            <form>
+                <input type="text" placeholder="youremail@adres.com" class="email">
+            </form> 
+            <h5>Attachment</h5>
+            <form>
+                <input type="text" placeholder="" class="empty">
+            </form> 
+        </div>
+        <div class="form">
+            <h3>Leave a message</h3>
+            <h5>Message</h5>
+            <form>
+                <textarea placeholder="Your message*" id= "message"></textarea>
+                <input id= "submit" type="submit" value="Send message">
+            </form>
+        </div>
+        <div class="faq">
+            <h3>Get In Touch</h3>
+            <h5>FAQ</h5>
+            <div class="faq__text">
+                <p>
+                The answer to your question may be here: <strong>FAQ</strong>
+                </p>
+                <p>
+                Otherwise, our customer service is available to answer your questions by e-mail from Monday to Friday, or by telephone from 8.30 a.m. to 5.30 p.m. (except public holidays).
+                </p>
+            </div>
+        </div>
+    </div>
 
 </div>
-
-
 
         <button class='to-top'></button>
     </main>
@@ -268,7 +299,7 @@
             <h1>More information</h1>
                 <ul class ="extra-links">
                     <li>
-                        <a href="/ourStory">Our Story</a> 
+                        <a href="./ourStory">Our Story</a> 
                     </li>
                     <li>
                         <a href="#">Become a partner</a>

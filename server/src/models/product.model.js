@@ -1,16 +1,31 @@
 import { Model, DataTypes } from 'sequelize';
 
+
 export default (sequelize) => {
 	class Product extends Model {
 		static associate(models) {
+            this.belongsToMany(
+                models.Category, 
+                {
+                    through: 'ProductHasCategories',
+                    as: 'categories',
+                    foreignKey: 'productId' 
+                })
 			
 		}
 	}
 
 	Product.init(
 		{
+            id: {
+                primaryKey: true,
+                type:DataTypes.UUIDV4,
+                defaultValue: DataTypes.UUIDV4,
+                allowNull: false,
+                unique: true,
+            },
 			name: {
-                type: DataTypes.STRING, 
+                type: DataTypes.STRING,
                 allowNull: false
             },
             synopsis: {

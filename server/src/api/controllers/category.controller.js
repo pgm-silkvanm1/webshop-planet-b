@@ -24,7 +24,7 @@ const getParentCategories = async (req, res, next) => {
 	try {
 		// Get categories from database
 		let categories = null;
-			categories = await database.Category.findAll({where: {parentId: null}})
+		categories = await database.Category.findAll({where: {parentId: null}})
 
 		// Send response
 		res.status(200).json(categories);
@@ -59,9 +59,11 @@ const getSubCategoriesByParentCategoryId = async (req, res, next) => {
 	 try {
 		const parentCategories = await database.Category.findAll({where: {parentId: null}});
 		const childCategories = await database.Category.findAll({where: {parentId: !null}});
+		console.log(parentCategories[0].dataValues)
+		console.log(childCategories[0].dataValues)
 	
 		const categories = parentCategories.map(parent => {
-			const children = childCategories.filter(child => child.dataValues.parentId.includes(parent.dataValues.id))
+			const children = childCategories.filter(child => child.dataValues.parentId == parent.dataValues.id)
 			
 			return {
 				...parent.dataValues,

@@ -3,7 +3,7 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class Order extends Model {
 		static associate(models) {
-			
+				
 		}
 	}
 

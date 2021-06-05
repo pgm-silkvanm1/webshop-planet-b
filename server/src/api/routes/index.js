@@ -164,7 +164,7 @@ router.get('/users', userController.getUsers);
  *     summary: Get a specific user by user uuid
  *     description: Get a specific user by user uuid
  */
-router.get('/users/:uuid', userController.getUserByUuid);
+router.get('/users/:id', userController.getUserById);
 
 /**
  * @swagger
@@ -182,7 +182,7 @@ router.post('/users', userController.createUser);
  *     summary: Update an existing user
  *     description: Update an existing user
  */
-router.put('/users/:uuid', userController.updateUser);
+router.put('/users/:id', userController.updateUser);
 
 /**
  * @swagger
@@ -191,6 +191,6 @@ router.put('/users/:uuid', userController.updateUser);
  *     summary: Delete an existing user
  *     description: Delete an existing user
  */
-router.delete('/users/:uuid', userController.deleteUser);
+router.delete('/users/:id', userController.deleteUser);
 
 export default router;

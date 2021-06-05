@@ -1,31 +1,48 @@
 import 'babel-polyfill';
 
-import database from '..';
 import faker from 'faker';
 import { v4 as uuidv4 } from 'uuid';
 
 export default {
   up: async (queryInterface, Sequelize) => {
-    console.log(database.User)
-    let data = [];
-    let amount = 50;
+    let users = [];
+    let profiles = [];
+    let amount = 20;
     const date = new Date();
 
     while(amount--){
-      data.push({
-        uuid: uuidv4(),
+      const id =  uuidv4()
+
+      users.push({
+        id: id,
         email: faker.internet.email(),
         password: faker.internet.password(),
         admin: false,
         createdAt: date,
         updatedAt: date,
-      })
-    }
+      });
 
-    await queryInterface.bulkInsert('Users', data, {})
+      profiles.push({
+        UserId: id,
+        firstName: faker.name.firstName(),
+        lastName:faker.name.lastName(),
+        street: faker.address.streetName(),
+        zipcode: faker.address.zipCode(),
+        city: faker.address.cityName(),
+        country:faker.address.country(),
+        dayOfBirth: -22074764,
+        phoneNumber:faker.phone.phoneNumber(),
+        createdAt: date,
+        updatedAt: date,
+      });
+    };
+
+    await queryInterface.bulkInsert('Users', users, {});
+    await queryInterface.bulkInsert('Profiles', profiles, {});
   },
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('Profiles', null, {});
   }
 };

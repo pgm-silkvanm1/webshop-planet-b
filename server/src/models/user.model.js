@@ -4,8 +4,7 @@ export default (sequelize) => {
 	class User extends Model {
 		static associate(models) {
 			this.hasOne(models.Profile, {
-				foreignKey: 'userId',
-				as: 'profile'
+				foreignKey: 'userId'
 			});
 		};
 	};

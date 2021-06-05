@@ -8,7 +8,8 @@ export default (sequelize) => {
 				{ 
 					through: 'ProductHasCategories',
 					as: 'products',
-					foreignKey: 'categoryId'
+					foreignKey: 'categoryId',
+					unique: false,
 				 });
 		};
 	};

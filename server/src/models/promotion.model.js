@@ -3,16 +3,12 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class Promotion extends Model {
 		static associate(models) {
-
+			this.belongsTo(models.Product);
 		}
 	}
 
 	Promotion.init(
 		{	
-			productId: {
-				type: DataTypes.STRING,
-				allowNull: false
-			},
 			description: {
 				type: DataTypes.STRING,
                 allowNull: false

@@ -9,8 +9,11 @@ export default (sequelize) => {
                 {
                     through: 'ProductHasCategories',
                     as: 'categories',
-                    foreignKey: 'productId' 
-                })
+                    foreignKey: 'productId',
+                    unique: false, 
+                });
+
+            this.hasMany(models.Promotion);
 			
 		}
 	}

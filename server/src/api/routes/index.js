@@ -113,7 +113,8 @@ router.put('/categories/:categoryId', categoryController.updateCategory);
 router.delete('/categories/:categoryId', categoryController.deleteCategory);
 
 router.get('/products', productController.getProducts);
-router.get('/products/:id', productController.getProductById);
+// router.get('/products/:id', productController.getProductById);
+router.get('/products/:categoryId', productController.getProductsByCategory);
 router.post('/products/', productController.createProduct);
 router.put('/products/:id', productController.updateProduct);
 router.delete('/products/:id', productController.deleteProduct);

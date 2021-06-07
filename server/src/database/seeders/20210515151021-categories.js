@@ -21,14 +21,14 @@ const categories = [
 	},
 	{
 		id: 3,
-		name: 'women',
+		name: 'men',
 		createdAt: date,
 		parentId: null,
 		updatedAt: date,
 	},
 	{
 		id: 4,
-		name: 'men',
+		name: 'women',
 		createdAt: date,
 		parentId: null,
 		updatedAt: date,

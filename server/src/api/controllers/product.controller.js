@@ -49,6 +49,30 @@ const getProductById = async (req, res, next) => {
 };
 
 /*
+Get products by category id
+*/
+const getProductsByCategory = async (req, res, next) => {
+	try {
+		// Get categoryId parameter
+		const { categoryId } = req.params;
+		console.log(categoryId)
+		console.log(database)
+		const category = await database.Category.findByPk(categoryId);
+		console.log(category)
+		// Get specific user from database
+		const products = await category.getProducts();
+
+		if (products === null) {
+			throw new HTTPError(`Could not found the product with id ${id}!`, 404);
+		}
+		// Send response
+		res.status(200).json(products);
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
+};
+
+/*
 Create a new product
 */
 const createProduct = async (req, res, next) => {
@@ -123,6 +147,6 @@ const deleteProduct = async (req, res, next) => {
 };
 
 export {
-	createProduct, getProducts, getProductById, updateProduct, deleteProduct
+	createProduct, getProducts, getProductById, getProductsByCategory, updateProduct, deleteProduct
 };
 

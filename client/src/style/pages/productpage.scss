@@ -1,0 +1,47 @@
+.product__list{
+    display:flex;
+    margin-top: 5rem;
+    ul{
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0;
+        li{
+            list-style-type: none;
+            width: 15rem;
+            svg{
+                position: absolute;
+                position: absolute;
+                background: white;
+                padding: 0.3rem;
+                border: 1px solid black;
+                align-items: right;
+                
+            }
+            margin: 1rem;
+            .image__container{
+               
+
+
+                img{
+                    height: 15rem;
+                    object-fit: cover;
+                }
+            }
+            a{
+                text-decoration: none;
+                
+                
+                .product__main{
+                    display: flex;
+                    justify-content: space-between;
+                    font-family: "Poppins";
+                    color: $greenish;
+    
+                }
+            }
+            
+        
+        }
+    }
+}

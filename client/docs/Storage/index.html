@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet"></head>
 <body>
     
-        <header>
+        <header class = "container">
 
         <a href="/index.html"><img src="/assets/img/logo.png"/></a>
 
@@ -25,7 +25,7 @@
 <li class="extra-menu"><a href="/cleaning/">Cleaning</a><ul><li><a href="/cleaning/bathroom/">Bathroom</a></li>
 <li><a href="/cleaning/floor/">Floor</a></li></ul></li>
 <li><a href="/PersonalCare/">Personal Care</a></li>
-<li class="extra-menu"><a href="/kids/">Kids</a><ul><li><a href="/kids/athome/">Home</a></li>
+<li class="extra-menu"><a href="/kids/">Kids</a><ul><li><a href="/kids/athome/">At Home</a></li>
 <li><a href="/kids/clothing/">Clothing</a></li>
 <li><a href="/kids/daipers/">Daipers</a></li>
 <li><a href="/kids/fooddrinks/">Food & Drinks</a></li></ul></li></ul>
@@ -36,6 +36,11 @@
             </div>
 
             <div class = "nav__practical">
+
+              <form>
+                    <input type="text" placeholder="Search" class="nav__practical__form--text">
+                        <input type="submit" placeholder="" value=" " class="nav__practical__form--icon">
+                </form>
 
                 <div class="nav__practical__icons">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38.382" height="40.652" viewBox="0 0 38.382 40.652">
@@ -74,7 +79,7 @@
                     </div>
                      <section class="basket__popup">
 
-<img src="https://image.flaticon.com/icons/png/512/1828/1828778.png " class="basket__close__style basket__close"/>
+<img class="basket__close__style basket__close" src="https://image.flaticon.com/icons/png/512/1828/1828778.png " />
 
 <h1>Shopping Basket</h1>
 
@@ -151,8 +156,8 @@
 
     <div class="basket__button">
     
-        <button class="basket__close yellow">Continue Shopping</button>
-        <a href="./payement/index.html"><button class="purple">Go to payement</button></a>
+        <button class="basket__continue yellow">Continue Shopping</button>
+        <a href="/payement/index.html"><button class="purple">Go to payement</button></a>
 
 
     </div>
@@ -164,10 +169,7 @@
                 </div>
             
 
-                <form>
-                    <input type="text" placeholder="Search" class="nav__practical__form--text">
-                        <input type="submit" placeholder="" value=" " class="nav__practical__form--icon">
-                </form>
+              
 
             </div>
 
@@ -179,6 +181,69 @@
 
     <main>
         
+    
+<div class="product__list container">
+        
+<div class="form__product">
+
+    <form>
+    <p>For</p>
+        <div class="option">
+            <input type="checkbox" id="men" name="men" checked>
+            <label for="men">Men</label>
+        </div>
+
+        <div class="option">
+            <input type="checkbox" id="women" name="Women">
+            <label for="Women">Women</label>
+        </div>
+        
+        <div class="option">
+            <input type="checkbox" id="kids" name="kids">
+            <label for="kids">Kids</label>
+        </div>
+    
+
+    <p>Price</p>
+        <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+</div>
+
+
+    <p>Feature</p>
+        <div class="option">
+            <input type="checkbox" id="organic" name="organic" checked>
+            <label for="organic">Organic</label>
+        </div>
+        <div class="option">
+            <input type="checkbox" id="zero__waste" name="zero__waste">
+            <label for="zero__waste">Zero Waste</label>
+        </div>
+        <div class="option">
+            <input type="checkbox" id="vegan" name="vegan">
+            <label for="vegan">Vegan</label>
+        </div>
+        <div class="option">
+            <input type="checkbox" id="fairtrade" name="fairtrade">
+            <label for="fairtrade">Fairtrade</label>
+        </div>
+    
+        <button type="submit" class="filter__submit" value="Submit">Apply</button>
+    </form>
+
+
+</div>
+
+
+
+        <ul class = "product__container">
+
+
+
+        </ul>
+</div>
+
+
 
         <button class='to-top'></button>
     </main>
@@ -229,13 +294,13 @@
             <h1>More information</h1>
                 <ul class ="extra-links">
                     <li>
-                        <a href="./ourStory">Our Story</a> 
+                        <a href="/ourStory">Our Story</a> 
                     </li>
                     <li>
                         <a href="#">Become a partner</a>
                     </li>
                     <li>
-                        <a href="#">Contact us</a> 
+                        <a href="/contact-us">Contact us</a> 
                     </li>
                 </ul>
         </div>
@@ -259,6 +324,8 @@
     </footer>
 
 
+    <script src="/assets/services.js" ></script>
     <script src = "/assets/app.js"></script>
+
 </body>
 </html>

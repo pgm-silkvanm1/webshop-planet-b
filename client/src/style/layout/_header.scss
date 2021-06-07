@@ -61,7 +61,6 @@ nav {
   flex-wrap: wrap;
   align-items: center;
   margin: 0 auto;
-  width: 90%;
   max-width: 100%;
  
   ul {
@@ -178,13 +177,13 @@ nav a:hover{
   flex-direction: column;
   li{
     font-size: 1rem;
+    transition: all ease 0.3s;
   }
   
 }
 
 
 .extra-menu li{
-  transition: all ease 0.2s;
   display: none;
 }
 

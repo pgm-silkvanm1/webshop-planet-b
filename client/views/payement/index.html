@@ -1,1 +1,95 @@
-<p>this is the payement page</p>
+---
+layout: base
+---
+<div class= "container">
+    <div>
+        <h2 class = "payement__details">Contact information</h2>
+
+        <form>
+            <div class="payement__name">
+                <label for="name">Firstname*</label>
+                <input type="text" id="name" name="user_name" required/>
+
+                <label for="name">Lastname*</label>
+                <input type="text" id="name" name="user_name" required/>
+            </div>
+
+            <div class = "payement__name">
+                <label for="name">Emailadres*</label>
+                <input type="text" id="name" name="user_name" required/>
+
+                <label for="name">Phonenumber*</label>
+                <input type="text" id="name" name="user_name" required/>
+            </div>
+
+            <button class="CTA__button">Next</button>
+        </form>
+
+
+        <h2 class = "payement__details">Shippinginformation</h2>
+
+             <form>
+             <div>
+
+                <div class="ship__information">
+                    <label for="name">Street*</label>
+                    <input type="text" class="ship__long" name="user_name" required/>
+
+                    <label for="name">Number*</label>
+                    <input type="text" class="ship__small" name="user_name" required/>
+
+                </div>
+                <div class="ship__information">
+
+                    <label for="name">City*</label>
+                    <input type="text" class="ship__long"name="user_name" required/>
+
+                    <label for="name">Zip code*</label>
+                    <input type="text" class="ship__small"  name="user_name" required/>
+                </div>
+            </div>
+            <button class="CTA__button">Next</button>
+        </form>
+       
+
+        <h2 class = "payement__details">Payment</h2>
+        <form>
+
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label for="vehicle1"> Bancontact</label><br>
+            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+            <label for="vehicle2"> Visa </label><br>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+            <label for="vehicle3"> Paypall</label><br>
+        </form>
+
+        <button class="CTA__button buy">Buy!</button>
+
+
+
+
+
+
+    </div>
+
+
+<div class = "basket__total">
+
+    <div class="basket__total--details">
+        <p>Elate Beauty Palet</p>
+        <p>€19,99</p>
+    </div>
+    <div class="basket__total--details">
+        <p>Elate Beauty Palet</p>
+        <p>€19,99</p>
+    </div>
+
+    <div class="basket__total--details">
+        <h4>Subtotal</h4>
+        <h4>€40,00</h4>
+    </div>
+
+</div>
+
+
+    

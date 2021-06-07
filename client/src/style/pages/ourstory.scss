@@ -2,6 +2,8 @@
 
     background-image:url("../assets/img/Aboutus.png");
     background-position: center;
+
+
 .ourstory__container{
     h1{
         margin-top: 5rem;
@@ -22,10 +24,24 @@
     &__vertical{
         display: flex;
         padding: 0.5rem;
+        flex-wrap: wrap;
         div{
             padding: 0.5rem;
         }
     }
 }
 
+@media (min-width: 70rem) {
+    .ourstory__container__vertical{
+      flex-wrap: nowrap;
+  }
+  
+  } 
+  
+
 }
+
+
+
+
+

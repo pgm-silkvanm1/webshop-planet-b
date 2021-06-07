@@ -8,6 +8,7 @@ module.exports = function(eleventyConfig){
 
     eleventyConfig.addPassthroughCopy({
         'src/main.css': 'assets/main.css',
+        'src/scripts/services.js': 'assets/services.js',
         'src/scripts/app.js': 'assets/app.js',
         'src/img': 'assets/img'
 

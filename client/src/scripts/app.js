@@ -8,7 +8,8 @@
         this.basketPopUp();
         this.hamburgerMenu();
         this.webshopApi = new web();
-        this.printProducts();
+        this.printHomepage();
+        this.print();
       },
       cacheElements() {
         this.toTop = document.querySelector('.to-top');
@@ -18,8 +19,11 @@
         this.$continue = document.querySelector('.basket__continue')
         this.$hamburger= document.querySelector('.nav__hamburger')
         this.$navList= document.querySelector('.nav__list')
-        this.$kids = document.querySelector('.row__products')
+        this.$products = document.querySelectorAll('.row__products')
         this.$discount = document.querySelector('.row__discount')
+        this.$productList = document.querySelector('.product__container')
+
+        
       },
 
   
@@ -57,29 +61,66 @@
     },
 
 
-    async printProducts(){
+    async printHomepage(){
       this.products = await this.webshopApi.getProducts();
       let slicedProducts =[]
       if(!!this.products){
           slicedProducts = this.products.slice(1,7)
       }
-      
-      this.$kids.innerHTML = slicedProducts.map((product)=>{
+
+      this.$products.forEach(element => {
+        element.innerHTML = slicedProducts.map((product)=>{
          
           return `
-          <li class = 'productList' >
+          <li>
             <a href = '/pages/detailpage' >
               <img src="https://images.unsplash.com/photo-1622893795218-c3936a516616?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" />
-              <p>${product.name}</p> 
-              <p>${product.description}</p> 
+              
+              <div class="product__main">
+                <p class = "product__main__name">${product.name}</p> 
+                <p class = "product__main__price">€${product.price}</p> 
+              </div>
+
+        
             </a>
           </li>`
       }).join("");
+        
+        
+      });
       
-     
-
-
   },
+
+  async print(){
+    this.productlist = await this.webshopApi.getKidsProducts();
+    console.log(this.productlist)
+    this.$productList.innerHTML = this.productlist.map(element => {
+       
+        return `
+        <li>
+          <a href = '/pages/detailpage' >
+          <div class="image__container">
+            <img src="https://images.unsplash.com/photo-1622893795218-c3936a516616?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" />
+          </div>
+            
+            <div class="product__main">
+              <p class = "product__main__name">${element.name}</p> 
+              <p class = "product__main__price">€${element.price}</p> 
+            </div>
+
+      
+          </a>
+        </li>`
+    
+      
+      
+    }).join('');
+    
+},
+
+
+   
+
 
     }
     app.init();

@@ -1,0 +1,40 @@
+.product__list{
+    display:flex;
+    margin-top: 5rem;
+    ul{
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0;
+        li{
+            list-style-type: none;
+            width: 15rem;
+            margin: 1rem;
+            .image__container{
+                background-image: url("../assets/img/shopping-basket.svg");
+                background-repeat: no-repeat;
+                background-position-x: 14.2rem;
+                background-position-x: 14.2rem;
+
+                img{
+                    height: 15rem;
+                    object-fit: cover;
+                }
+            }
+            a{
+                text-decoration: none;
+                
+                
+                .product__main{
+                    display: flex;
+                    justify-content: space-between;
+                    font-family: "Poppins";
+                    color: $greenish;
+    
+                }
+            }
+            
+        
+        }
+    }
+}

@@ -9,12 +9,19 @@
         li{
             list-style-type: none;
             width: 15rem;
+            svg{
+                position: absolute;
+                position: absolute;
+                background: white;
+                padding: 0.3rem;
+                border: 1px solid black;
+                align-items: right;
+                
+            }
             margin: 1rem;
             .image__container{
-                background-image: url("../assets/img/shopping-basket.svg");
-                background-repeat: no-repeat;
-                background-position-x: 14.2rem;
-                background-position-x: 14.2rem;
+               
+
 
                 img{
                     height: 15rem;

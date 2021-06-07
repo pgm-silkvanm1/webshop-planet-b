@@ -3,22 +3,28 @@
     display: flex;
     margin-left: 1rem;
     position: relative;
+    padding-top: 3rem;
+    color: #6C7B64;
 
     .detail--photos {
         display: flex;
+        height: 30rem;
+        width: 50%;
+        overflow-y: auto;
         flex-direction: column;
         margin-right: 1rem;
-        margin-top: 0.5rem;
-        img {
-            width: 12rem;
-            height: 8rem;
-            padding-bottom: 1rem;
+        margin-left: 1rem;
+
+        .small-photo {
+            width: 15rem;
             object-fit: cover;
+            margin-bottom: 1rem;
         }
     }
 
     .detail__product{
         margin-left: 2rem;
+        width: 80%;
 
         .ingredients {
             font-family: "Poppins", sans-serif;
@@ -37,24 +43,19 @@
         margin:0;
         padding: 0;
     }
-    img{
-        width: 19.5326rem;
-        height: 20.5rem;
+    .big-photo{
         max-width: 100%;
         object-fit: cover;
     }
 
     .description {
         margin-left: 3rem;
-        position: relative;
         width: 20%;
         h2{
             color: #09B1BA;
             font-family: 'Amatic SC', cursive;
             font-size: 3.5rem;
             margin: 0;
-            position: absolute;
-            top: -5rem;
         }
 
         h3 {
@@ -121,3 +122,45 @@
         }
     }
 }
+
+.container__review {
+    margin-top: 5rem;
+        
+    h2 {
+        color: #6C7B64;
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    .rating-icon {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+
+        .experience{
+            background-color: #AA9DB1;
+            text-transform: uppercase;
+            padding: 1rem;
+        }
+    }
+
+    .reviews {
+        display: flex;
+        justify-content: space-between;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 2rem;
+
+        .reviews--text {
+            h4 {
+                margin: 0;
+            }
+            h5 {
+                margin: 0;
+            }
+            p {
+                margin: 0;
+            }
+        }
+    }
+}
+

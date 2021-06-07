@@ -1,7 +1,7 @@
 import 'babel-polyfill';
-
 import faker from 'faker';
 import { v4 as uuidv4 } from 'uuid';
+import database from '..'
 
 export default {
   up: async (queryInterface, Sequelize) => {

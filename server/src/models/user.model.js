@@ -6,6 +6,16 @@ export default (sequelize) => {
 			this.hasOne(models.Profile, {
 				foreignKey: 'userId'
 			});
+
+			this.belongsToMany(models.Order, {
+				through: 'UserHasOrders',
+				as: 'orders',
+				foreignKey: 'userId'
+			});
+
+			this.hasMany(models.ProductReview,{
+				foreignKey: 'userId'
+			})
 		};
 	};
 

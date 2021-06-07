@@ -3,20 +3,18 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class ProductReview extends Model {
 		static associate(models) {
+			this.belongsTo(models.Product, {
+				foreignKey: 'productId'
+			});
 
+			this.belongsTo(models.User, {
+				foreignKey: 'userId'
+			});
 		}
 	}
 
 	ProductReview.init(
 		{	
-			userId: {
-				type: DataTypes.STRING,
-				allowNull: false
-			},
-			productId: {
-				type:DataTypes.STRING,
-				allowNull: false
-			},
 			description: {
 				type: DataTypes.STRING,
                 allowNull: false

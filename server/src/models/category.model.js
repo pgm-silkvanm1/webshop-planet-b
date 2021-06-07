@@ -9,7 +9,6 @@ export default (sequelize) => {
 					through: 'ProductHasCategories',
 					as: 'products',
 					foreignKey: 'categoryId',
-					unique: false,
 				 });
 		};
 	};

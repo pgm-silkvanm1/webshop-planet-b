@@ -3,16 +3,24 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class Order extends Model {
 		static associate(models) {
+			this.belongsToMany(models.Product, { 
+				through: 'OrderHasProducts',
+				as: 'products',
+				foreignKey: 'orderId'
+		 	});
+
+			 this.belongsToMany(models.User, {
+				 through: 'UserHasOrders',
+				 as: 'user',
+				 foreignKey: 'orderId'
+			 })
+
 				
 		}
 	}
 
 	Order.init(
 		{	
-			userId: {
-				type: DataTypes.STRING,
-				allowNull: false
-			},
 			orderStatus: {
 				type: DataTypes.STRING,
                 allowNull: false

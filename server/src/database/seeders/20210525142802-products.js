@@ -1,43 +1,41 @@
 import 'babel-polyfill';
 import faker from 'faker';
 import { v4 as uuidv4 } from 'uuid';
+import database from '..';
 
+database.connect();
 
-export default {
-  up: async (queryInterface, Sequelize) => {
+const createProducts = ( amount = 20) => {
     let products = [];
-    let productCategories= [];
-    let amount = 100;
-    const date = new Date;
-    
-    while(amount--){
-      const productId = uuidv4();
+     
+    for(let i = 0; i < amount; i ++){
+      const date = new Date();
+      const name = faker.commerce.productName(); 
+
       products.push({
-        id: productId,
-        name: faker.commerce.productName(),
-        synopsis: faker.lorem.paragraph(),
+        id: uuidv4(),
+        name: name,
+        synopsis: faker.lorem.sentence(),
         description:faker.commerce.productDescription(),
+        image: `https://source.unsplash.com/500x500?sig=1&${faker.helpers.slugify(name)}`,
         price:faker.commerce.price(),
         stock: Math.floor(Math.random() * 1000),
         createdAt: date,
         updatedAt: date
       });
-      
-        const randomCategory = Math.floor(6 + Math.random()*16);
-        productCategories.push({
-          ProductId: productId,
-          CategoryId: randomCategory,
-          createdAt: date,
-          updatedAt: date
-        })
-    }
-  
-    await queryInterface.bulkInsert('Products', products, {});
-    await queryInterface.bulkInsert('ProductHasCategories', productCategories, {});
+    };
 
+    return products;
+};
+
+
+export default {
+  up: async (queryInterface, Sequelize) => {
+  
+    await queryInterface.bulkInsert(database.Product.tableName, createProducts(100), {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Products', null, {});
+    await queryInterface.bulkDelete(database.Product.tableName, null, {});
   }
 };

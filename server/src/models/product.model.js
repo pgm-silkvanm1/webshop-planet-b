@@ -9,11 +9,24 @@ export default (sequelize) => {
                 {
                     through: 'ProductHasCategories',
                     as: 'categories',
-                    foreignKey: 'productId',
-                    unique: false, 
+                    foreignKey: 'productId'
+                });
+        
+            this.belongsToMany(
+                models.Order, 
+                {
+                    through: 'OrderHasProducts',
+                    as: 'orders',
+                    foreignKey: 'productId'
                 });
 
-            this.hasMany(models.Promotion);
+            this.hasMany(models.Promotion, {
+                foreignKey: 'productId'
+            });
+            
+            this.hasMany(models.ProductReview, {
+                foreignKey: 'productId'
+            });
 			
 		}
 	}
@@ -37,6 +50,10 @@ export default (sequelize) => {
             },
             description: {
                 type: DataTypes.STRING, 
+                allowNull: false
+            },
+            image: {
+                type: DataTypes.STRING,
                 allowNull: false
             },
             price: {

@@ -3,7 +3,9 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class Promotion extends Model {
 		static associate(models) {
-			this.belongsTo(models.Product);
+			this.belongsTo(models.Product, {
+				foreignKey: 'productId'
+			});
 		}
 	}
 

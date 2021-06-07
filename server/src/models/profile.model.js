@@ -3,7 +3,9 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class Profile extends Model {
 		static associate(models) {
-			this.belongsTo(models.User, { foreignKey: 'userId' })
+			this.belongsTo(models.User, {
+				foreignKey: 'userId'
+			})
 		}
 	}
 

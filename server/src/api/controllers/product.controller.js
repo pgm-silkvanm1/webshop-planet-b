@@ -55,13 +55,21 @@ const getProductsByCategory = async (req, res, next) => {
 	try {
 		// Get categoryId parameter
 		const { categoryId } = req.params;
-		console.log(categoryId)
-		console.log(database)
 		const category = await database.Category.findByPk(categoryId);
-		console.log(category)
-		// Get specific user from database
-		const products = await category.getProducts();
-
+		let products = [];
+		if(!category.dataValues.parentId) {
+			products = await database.Product.findAll({
+				include: {
+					model: database.Category,
+					as: 'categories',
+					where: {parentId : categoryId},
+					attributes: ['id', 'parentId'],
+				}
+			});			
+		} else {
+			products = await category.getProducts();
+		}
+		
 		if (products === null) {
 			throw new HTTPError(`Could not found the product with id ${id}!`, 404);
 		}

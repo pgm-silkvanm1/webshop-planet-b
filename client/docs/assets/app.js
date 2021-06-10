@@ -22,8 +22,7 @@
         this.$products = document.querySelectorAll('.row__products')
         this.$discount = document.querySelector('.row__discount')
         this.$productList = document.querySelector('.product__container')
-
-        
+            
       },
 
   

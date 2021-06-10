@@ -102,7 +102,7 @@ footer{
     }
    
     
-    .footer__orange{
+    .footer--orange{
         background-color: $beige;
         color: white;
         margin: 0;
@@ -126,6 +126,40 @@ footer{
         }
     }    
 }
+
+@media (max-width: 50rem) {
+    footer {
+        .payments{
+            &__list {
+                li {
+
+                    .payments-logo {
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+            }
+        }
+
+        .container-footer {
+            padding-left: 2rem;
+            flex-direction: column;
+
+            form {
+                width: 65%;
+            }
+        }
+
+        .footer--orange {
+            &__list {
+                justify-content: space-between;
+                width: 80%;
+                margin: 0;
+            }
+        }
+    }
+}
+
   
  
   

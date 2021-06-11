@@ -1,0 +1,48 @@
+.inlogpage{
+    margin-bottom: 4rem;
+    width: 60%;
+    margin: 0 auto;
+
+    h1{
+        text-align: center;
+        color: $greenish;
+    }
+    .container__signin{
+        display: flex;
+        flex-direction: column;
+       &__form{
+           display: flex;
+           flex-direction: column;
+           width: 50%;
+           margin: 0 auto;
+          
+           label{
+               font-family: "Poppins", sans-serif;
+               font-weight: 400;
+               margin-top: 1rem;
+               margin-bottom: 0.4rem;
+               padding: 0;
+    
+           }
+           input{
+               padding: 0.5rem;
+               background: $beige;
+               border: 1px solid black;
+               margin-bottom: 0.4rem;
+           }
+
+       }
+    
+       .password{
+           input{
+    
+               background-image:url("/assets/img/eye-password.svg") ;
+               background-repeat: no-repeat;
+               background-position-x: 99%;
+               
+           }
+    }
+}
+
+}
+

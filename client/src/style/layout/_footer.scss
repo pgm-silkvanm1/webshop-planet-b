@@ -30,6 +30,24 @@ footer{
         flex-wrap: wrap;
         color: $greenish;
 
+
+        form {
+            display: flex;
+            border: 1px solid grey;
+            padding: 0.2rem;
+
+            input {
+                border: none;
+                background-color: $gray;
+                color: $greenish;
+                opacity: 29%;
+            }
+
+            .submit {
+                cursor: pointer;
+            }
+        }
+
         li{
             padding-bottom: 0.5rem;
             list-style-type: none;
@@ -60,13 +78,9 @@ footer{
         p{
             padding: 1rem;
             width: 15rem;
-            margin: 0rem;
-
-            .container__footer--important{
-                font-weight: bold;
-            }
-    
+            margin: 0rem;    
         }
+
         .container__links{
             display: flex;
             margin: 0;
@@ -88,7 +102,7 @@ footer{
     }
    
     
-    .footer__orange{
+    .footer--orange{
         background-color: $beige;
         color: white;
         margin: 0;
@@ -112,6 +126,40 @@ footer{
         }
     }    
 }
+
+@media (max-width: 50rem) {
+    footer {
+        .payments{
+            &__list {
+                li {
+
+                    .payments-logo {
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+            }
+        }
+
+        .container-footer {
+            padding-left: 2rem;
+            flex-direction: column;
+
+            form {
+                width: 65%;
+            }
+        }
+
+        .footer--orange {
+            &__list {
+                justify-content: space-between;
+                width: 80%;
+                margin: 0;
+            }
+        }
+    }
+}
+
   
  
   

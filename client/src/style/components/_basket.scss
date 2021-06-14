@@ -1,5 +1,6 @@
 .basket__popup{
     display: none;
+    z-index: 100;
 }
 
 .basket__popup.open{
@@ -24,6 +25,7 @@
     h1{
         display: flex;
         justify-content: center;
+        margin-top: 0;
         color: $beige;
     }
     .basket__item{

@@ -8,7 +8,10 @@ Import custom packages
 */
 import * as categoryController from '../controllers/category.controller';
 import * as productController from '../controllers/product.controller';
+import * as orderController from '../controllers/order.controller';
+import * as reviewController from '../controllers/review.controller';
 import * as userController from '../controllers/user.controller';
+import * as authController from '../controllers/auth.controller';
 
 /*
 Make a router
@@ -53,7 +56,7 @@ Routes
  *                      updatedAt:
  *                          type: date
  *                          description: The date at wich the category was created
- *                          example: 2021-05-24T20:18:50.847Z        
+ *                          example: 2021-05-24T20:18:50.847Z
  *                      children:
  *                          type: array
  *                          items:
@@ -75,7 +78,7 @@ Routes
  *                                      type: date
  *                                      description: The date at wich the category was created
  *                                      example: 2021-05-24T20:18:50.847Z
- *                                  
+ *
  */
 router.get('/categories', categoryController.getSortedCategories);
 /**
@@ -113,9 +116,11 @@ router.put('/categories/:categoryId', categoryController.updateCategory);
 router.delete('/categories/:categoryId', categoryController.deleteCategory);
 
 router.get('/products', productController.getProducts);
-// router.get('/products/:id', productController.getProductById);
-router.get('/products/:categoryId', productController.getProductsByCategory);
-router.post('/products/', productController.createProduct);
+router.get('/products/:id', productController.getProductById);
+router.get('/products/category/:categoryId', productController.getProductsByCategory);
+router.get('/products/:id/reviews', productController.getProductReviews);
+router.get('/products/:id/promotions', productController.getProductPromotions);
+router.post('/products', productController.createProduct);
 router.put('/products/:id', productController.updateProduct);
 router.delete('/products/:id', productController.deleteProduct);
 
@@ -193,5 +198,18 @@ router.put('/users/:id', userController.updateUser);
  *     description: Delete an existing user
  */
 router.delete('/users/:id', userController.deleteUser);
+
+router.get('/orders', orderController.getOrders);
+router.get('/orders/:id', orderController.getOrderById);
+router.post('/orders/create/:userId', orderController.createOrder);
+router.post('/orders/add/:id', orderController.addProductToOrder);
+router.put('/orders/:id', orderController.updateOrder);
+router.delete('/orders/:id', orderController.deleteOrder);
+
+router.get('/review', reviewController.getReviews);
+router.get('/review/:productId', reviewController.getReviewsByProductId);
+
+router.post('/auth/register', authController.register);
+router.post('/auth/login', authController.login);
 
 export default router;

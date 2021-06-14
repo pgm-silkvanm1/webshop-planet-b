@@ -1,6 +1,4 @@
-import passport from 'passport';
 import passportJWT from 'passport-jwt';
-
 import { EnvironmentVariables } from '../config';
 
 // Initialise passport
@@ -22,4 +20,4 @@ const jwtStrategy = new JwtStrategy(jwtOptions, async (jwtData, done) => {
 	}
 });
 
-export { jwtStrategy };
+export default { jwtStrategy };

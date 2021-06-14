@@ -1,46 +1,48 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { Model, DataTypes } from 'sequelize';
 
 export default (sequelize) => {
 	class User extends Model {
 		static associate(models) {
 			this.hasOne(models.Profile, {
-				foreignKey: 'userId'
+				foreignKey: 'userId',
+				as: 'profile',
 			});
 
 			this.belongsToMany(models.Order, {
 				through: 'UserHasOrders',
 				as: 'orders',
-				foreignKey: 'userId'
+				foreignKey: 'userId',
 			});
 
-			this.hasMany(models.ProductReview,{
-				foreignKey: 'userId'
-			})
-		};
-	};
+			this.hasMany(models.ProductReview, {
+				foreignKey: 'userId',
+				as: 'productReviews',
+			});
+		}
+	}
 
 	User.init(
 		{
 			id: {
 				primaryKey: true,
-				type: DataTypes.UUIDV4, 
+				type: DataTypes.UUIDV4,
 				defaultValue: DataTypes.UUIDV4,
 				allowNull: false,
 				unique: true,
 			},
 			password: {
-				type: DataTypes.STRING, 
-				allowNull: false
-			},
+				type: DataTypes.STRING,
+				allowNull: false			},
       		email: {
-				  type: DataTypes.STRING, 
+				  type: DataTypes.STRING,
 				  allowNull: false,
-				  unique: true
-				},
-			admin : {
+				  unique: true,
+			},
+			admin: {
 				type: DataTypes.BOOLEAN,
-				defaultValue: false, 
-				allowNull: false
+				defaultValue: false,
+				allowNull: false,
 			},
 		},
 		{

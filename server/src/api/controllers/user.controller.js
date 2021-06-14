@@ -7,9 +7,25 @@ Get all users
 const getUsers = async (req, res, next) => {
 	try {
 		// Get users from database
-		let users = null;		
-        users = await database.User.findAll({
-			include: database.Profile
+		let users = null;
+		users = await database.User.findAll({
+			include: [
+				{
+					model: database.Profile,
+					as: 'profile',
+				},
+				{
+					model: database.Order,
+					as: 'orders',
+					through: {
+						attributes: [],
+					},
+				},
+				{
+					model: database.ProductReview,
+					as: 'productReviews',
+				},
+			],
 		});
 
 		// Send response
@@ -27,10 +43,29 @@ const getUserById = async (req, res, next) => {
 		// Get user id parameter
 		const { id } = req.params;
 		// Get specific user from database
-		const user = await database.User.findOne({where: {id: id}});
+		const user = await database.User.findOne({
+			where: { id },
+			include: [
+				{
+					model: database.Profile,
+					as: 'profile',
+				},
+				{
+					model: database.Order,
+					as: 'orders',
+					through: {
+						attributes: [],
+					},
+				},
+				{
+					model: database.ProductReview,
+					as: 'productReviews',
+				},
+			],
+		});
 
 		if (user === null) {
-			throw new HTTPError(`Could not found the user with id ${id}!`, 404);
+			throw new HTTPError(`Could not find the user with id ${id}!`, 404);
 		}
 		// Send response
 		res.status(200).json(user);
@@ -46,7 +81,7 @@ const createUser = async (req, res, next) => {
 	try {
 		// Get body from response
 		const model = req.body;
-		// Create a post
+		// Create a user
 		const createdModel = await database.User.create(model);
 		// Send response
 		res.status(201).json(createdModel);
@@ -62,9 +97,8 @@ const updateUser = async (req, res, next) => {
 	try {
 		// Get id parameter
 		const { id } = req.params;
-		console.log(id);
 		// Get specific user from database
-		const user = await database.User.findOne({where: { id: id }});
+		const user = await database.User.findOne({ where: { id } });
 
 		if (user === null) {
 			throw new HTTPError(`Could not found the user with id ${id}!`, 404);
@@ -74,7 +108,7 @@ const updateUser = async (req, res, next) => {
 		const model = req.body;
 		const updatedUser = await database.User.update(model, {
 			where: {
-				id: id,
+				id,
 			},
 		});
 
@@ -93,7 +127,7 @@ const deleteUser = async (req, res, next) => {
 		// Get id parameter
 		const { id } = req.params;
 		// Get specific user from database
-		const user = await database.User.findOne({where: {id: id}});
+		const user = await database.User.findOne({ where: { id } });
 
 		if (user === null) {
 			throw new HTTPError(`Could not found the user with id ${id}!`, 404);
@@ -102,7 +136,7 @@ const deleteUser = async (req, res, next) => {
 		// Delete a user with specified id
 		const message = await database.User.destroy({
 			where: {
-				id: id,
+				id,
 			},
 		});
 
@@ -114,5 +148,5 @@ const deleteUser = async (req, res, next) => {
 };
 
 export {
-	getUsers, createUser, updateUser, getUserById, deleteUser
+	getUsers, createUser, updateUser, getUserById, deleteUser,
 };

@@ -10,6 +10,7 @@
         this.webshopApi = new web();
         this.printHomepage();
         this.print();
+        this.getURL();
       },
       cacheElements() {
         this.toTop = document.querySelector('.to-top');
@@ -126,6 +127,17 @@
       }).join('');
     }
   },
+
+  getURL(parameter) {
+    const url = window.location.search;
+    console.log(window.location);
+    const params = new URLSearchParams(url);
+    const product = params.get(parameter);
+    console.log(product);
+    return product;
+  },
+
+
 
 
    

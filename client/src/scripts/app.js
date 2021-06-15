@@ -98,6 +98,7 @@
       },
 
       async print(){
+        console.log(this.productList)
         this.$productList.innerHTML = this.productlist.map(element => {
         
           return `

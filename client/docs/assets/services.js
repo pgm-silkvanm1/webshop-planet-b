@@ -5,8 +5,8 @@ function web() {
     try{
       const response = await fetch (`${WEBSHOP_BASE_PATH}/products`);
       const data = await response.json();
+      console.log(data)
       return data;
-      
     } catch(error){
       console.log('an error',error)
 
@@ -25,17 +25,7 @@ function web() {
     }
   };
 
-  this.getCategories = async () => {   
-    try{
-      const response = await fetch (`${WEBSHOP_BASE_PATH}/products`);
-      const data = await response.json();
-      return data;
-      
-    } catch(error){
-      console.log('an error',error)
 
-    }
-  };
 
   this.getCategories = async () => {   
     try{

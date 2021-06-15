@@ -64,14 +64,6 @@
       },
 
       async printHomepage() {
-
-        this.$navLink.forEach((link)=>{
-          
-          console.log(link.getAttribute('href'))
-
-        })
-
-
         this.products = await this.webshopApi.getProducts();
         let slicedProducts = [];
         if (!!this.products) {
@@ -98,7 +90,7 @@
       },
 
       async print(){
-        console.log(this.productList)
+        this.productlist = await this.webshopApi.getProducts();
         this.$productList.innerHTML = this.productlist.map(element => {
         
           return `

@@ -64,14 +64,6 @@
       },
 
       async printHomepage() {
-
-        // this.$navLink.forEach((link)=>{
-          
-        //   console.log(link.getAttribute('href'))
-
-        // })
-
-
         this.products = await this.webshopApi.getProducts();
         let slicedProducts = [];
         if (!!this.products) {
@@ -98,10 +90,7 @@
       },
 
       async print(){
-        console.log(this.productList)
         this.productlist = await this.webshopApi.getProducts();
-
-
         this.$productList.innerHTML = this.productlist.map(element => {
         
           return `
@@ -114,7 +103,7 @@
             <a href = '/pages/detailpage' >
       
             <img src="${element.image}" loading="lazy" />
-
+               
               <div class="product__main">
                 <p class = "product__main__name">${element.name}</p> 
                 <p class = "product__main__price">€${element.price}</p> 

@@ -99,9 +99,6 @@
 
       async print(){
         console.log(this.productList)
-        this.productlist = await this.webshopApi.getProducts();
-
-
         this.$productList.innerHTML = this.productlist.map(element => {
         
           return `
@@ -113,8 +110,8 @@
             </div>
             <a href = '/pages/detailpage' >
       
-            <img src="${element.image}" loading="lazy" />
-
+              <img src="https://images.unsplash.com/photo-1622893795218-c3936a516616?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" />
+               
               <div class="product__main">
                 <p class = "product__main__name">${element.name}</p> 
                 <p class = "product__main__price">€${element.price}</p> 

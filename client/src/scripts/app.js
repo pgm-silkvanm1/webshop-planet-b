@@ -65,11 +65,11 @@
 
       async printHomepage() {
 
-        this.$navLink.forEach((link)=>{
+        // this.$navLink.forEach((link)=>{
           
-          console.log(link.getAttribute('href'))
+        //   console.log(link.getAttribute('href'))
 
-        })
+        // })
 
 
         this.products = await this.webshopApi.getProducts();

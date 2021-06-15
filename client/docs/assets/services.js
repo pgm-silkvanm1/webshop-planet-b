@@ -1,5 +1,7 @@
 const WEBSHOP_BASE_PATH = 'http://localhost:8080/api';
 
+let products = [];
+
 function web() {
   this.getProducts = async () => {   
     try{

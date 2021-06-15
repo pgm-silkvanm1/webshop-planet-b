@@ -40,9 +40,7 @@
             const basket = ev.target.dataset.id || ev.target.parentNode.dataset.id || ev.target.parentNode.parentNode.dataset.id;
             console.log(basket)
         })
-
         }
-        
       },
 
       basketPopUp() {
@@ -65,12 +63,9 @@
 
       async printHomepage() {
 
-        this.$navLink.forEach((link)=>{
-          
-          console.log(link.getAttribute('href'))
-
-        })
-
+        // this.$navLink.forEach((link)=>{
+        //   console.log(link.getAttribute('href'))
+        // })
 
         this.products = await this.webshopApi.getProducts();
         let slicedProducts = [];
@@ -99,6 +94,8 @@
 
       async print(){
         console.log(this.productList)
+        this.productlist = await this.webshopApi.getProducts();
+
         this.$productList.innerHTML = this.productlist.map(element => {
         
           return `
@@ -110,7 +107,7 @@
             </div>
             <a href = '/pages/detailpage' >
       
-              <img src="https://images.unsplash.com/photo-1622893795218-c3936a516616?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" />
+              <img src="${element.image}" loading="lazy" />
                
               <div class="product__main">
                 <p class = "product__main__name">${element.name}</p> 
@@ -131,6 +128,7 @@
         console.log(product);
         return product;
       }
+      
     };
   app.init();
 })();

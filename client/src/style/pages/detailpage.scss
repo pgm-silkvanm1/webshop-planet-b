@@ -1,3 +1,5 @@
+
+
 .filter__container{
     display: flex;
     padding-top: 3rem;
@@ -9,6 +11,7 @@
     margin-left: 1rem;
     position: relative;
     color: #6C7B64;
+    font-family: 'Poppins';
 
     .detail--photos {
         display: flex;
@@ -157,6 +160,7 @@
         margin-bottom: 2rem;
 
         .reviews--text {
+            font-family: 'Poppins', sans-serif;
             h4 {
                 margin: 0;
             }

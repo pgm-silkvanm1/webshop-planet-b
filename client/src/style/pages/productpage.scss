@@ -1,4 +1,9 @@
-
+.product__title{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 4rem;
+    color: $greenish
+}
 
 .product__list{
     display:flex;

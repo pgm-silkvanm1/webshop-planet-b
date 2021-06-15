@@ -25,9 +25,11 @@
       this.$products = document.querySelectorAll(".row__products");
       this.$discount = document.querySelector(".row__discount");
       this.$productList = document.querySelector(".product__container");
+      this.$productTitle = document.querySelector(".product__title");
       this.$detailContainer = document.querySelector(".container__detail");
       this.$detailReviews = document.querySelector(".reviews");
-      this.$searchBar = document.getElementById('searchbar');
+      this.$searchBar = document.getElementById("searchbar");
+      this.$searchList = document.querySelector(".searchlist__item");
 
     },
 
@@ -164,19 +166,30 @@
         `
   
         this.users = await this.webshopApi.getUsers();  
-        const reviews = this.productDetail.ProductReviews;
-        console.log(reviews)
+        const reviews = this.productDetail.reviews;
+
+        console.log(reviews.length)
         this.$detailReviews.innerHTML = reviews.map((event)=> {
           const reviewUser = this.users.find (user => user.id === event.userId)
-          console.log(reviewUser)
   
   
           return `
-          <div class="reviews--text">
-          <h4>${reviewUser.profile.firstName}</h4>
-          <h5>${event.createdAt }</h5>
-          <p>${event.description}</p>
+          <div class="container__review">
+              <h2>Reviews ${reviews.length}</h2>
+              <div class="rating-icon">
+            
+                  <button class="CTA__button experience">Share your experience</button>
+              </div>
           </div>
+
+          <div class="reviews--text">
+            <h3>${reviewUser.profile.firstName}</h3>
+            <p>${event.createdAt }</p>
+            <p>${event.description}</p>
+          </div>
+
+
+
          
           `
         }).join('');
@@ -186,19 +199,36 @@
     },
 
     async printCategories(){
-      const categoryName = window.location;
+      const categoryName =window.location.pathname.split('/');
       this.categories = await this.webshopApi.getCategories();
-      const categoryPath = categoryName.pathname.replaceAll('/', '')
-
-      const pageCategory = this.categories.find (category => category.name === categoryPath)
-      console.log(pageCategory.id)
-      
+      // const categoryPath = categoryName.pathname.replaceAll('/', '')
+      console.log(categoryName)
       
 
-      this.category = await this.webshopApi.getCategoriesById(pageCategory.id);
+      if(categoryName.length > 3){
+         this.pageCategory = this.categories.find(category => category.name === categoryName[2])
+         console.log(categoryName[2])
+      }else{
+        this.pageCategory = this.categories.find(category => category.name === categoryName[1])
+        console.log(categoryName[1])
+
+      }
+      
+
+      
+      
+      this.category = await this.webshopApi.getCategoriesById(this.pageCategory.id);
       console.log(this.category)
+      
+
 
       if(this.$productList !== null){
+
+        this.$productTitle.innerHTML = `
+
+        <h2>${this.pageCategory.name}</h2>
+        `
+
         this.$productList.innerHTML = this.category
           .map((element) => {
             return `
@@ -227,18 +257,30 @@
     },
 
     async searchBar () {
-      const searchlist = await this.webshopApi.getProducts();
+      const products = await this.webshopApi.getProducts();
 
       this.$searchBar.addEventListener('keyup', (e) => {
         const searchString = e.target.value.toLowerCase();
-        const filteredProducts = searchlist.filter(allProducts => {
+        const filteredProducts = products.filter(fetchedproduct => {
           return (
-            allProducts.name.includes(searchString) 
+            fetchedproduct.name.toLowerCase().includes(searchString) 
           );
         });
-        console.log(filteredProducts)
+        this.$searchList.innerHTML += filteredProducts.map(product => {
+          return `<li>
+          <a href = '/pages/detailpage?id=${product.id}' >
+              <img src="${product.image}" loading="lazy" />
+              
+              <div class="product__main">
+                <p class = "product__main__name">${product.name}</p> 
+                <p class = "product__main__price">€${product.price}</p> 
+              </div>
+            </a>
+          </li>`;
+        }).join("");
+
       });
-  }
+    }
 }
   app.init();
 })();

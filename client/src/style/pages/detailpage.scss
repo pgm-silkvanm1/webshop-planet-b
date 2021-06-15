@@ -1,9 +1,13 @@
+.filter__container{
+    display: flex;
+    padding-top: 3rem;
+
+}
 .container__detail {
     width: 100%;
     display: flex;
     margin-left: 1rem;
     position: relative;
-    padding-top: 3rem;
     color: #6C7B64;
 
     .detail--photos {
@@ -51,6 +55,7 @@
 
     .description {
         margin-left: 3rem;
+        margin-top: 10rem;
         width: 20%;
         h2{
             color: #09B1BA;

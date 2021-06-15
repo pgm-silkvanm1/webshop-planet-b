@@ -3,7 +3,7 @@ import database from '..';
 
 database.connect();
 
-const date = new Date();	
+const date = new Date();
 const categories = [
 	{
 		id: 1,
@@ -95,14 +95,14 @@ const categories = [
 		createdAt: date,
 		parentId: 3,
 		updatedAt: date,
-	},			
+	},
 	{
 		id: 14,
 		name: 'dental',
 		createdAt: date,
 		parentId: 3,
 		updatedAt: date,
-	},			
+	},
 	{
 		id: 15,
 		name: 'make-up',
@@ -161,14 +161,12 @@ const categories = [
 	},
 ];
 
-
-
 export default {
-	up: async (queryInterface, Sequelize) => {
+	up: async (queryInterface) => {
 		await queryInterface.bulkInsert(database.Category.tableName, categories, {});
 	},
 
-	down: async (queryInterface, Sequelize) => {
+	down: async (queryInterface) => {
 		await queryInterface.bulkDelete(database.Category.tableName, null, {});
 	},
 };

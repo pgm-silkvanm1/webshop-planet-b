@@ -1,5 +1,5 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 import { Model, DataTypes } from 'sequelize';
+import hashPassword from '../utils/hashPassword';
 
 export default (sequelize) => {
 	class User extends Model {
@@ -34,11 +34,15 @@ export default (sequelize) => {
 			password: {
 				type: DataTypes.STRING,
 				allowNull: false,
+				set(value) {
+					const hash = hashPassword(value);
+					this.setDataValue('password', hash);
+				},
 			},
-      		email: {
-				  type: DataTypes.STRING,
-				  allowNull: false,
-				  unique: true,
+			email: {
+				type: DataTypes.STRING,
+				allowNull: false,
+				unique: true,
 			},
 			admin: {
 				type: DataTypes.BOOLEAN,

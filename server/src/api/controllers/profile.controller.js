@@ -82,25 +82,15 @@ Update an exisiting profile
 const updateProfile = async (req, res, next) => {
 	try {
 		// Get id parameter
-		const { id } = req.params;
-		console.log(id);
-		// Get specific profile from database
-		const profile = await database.Profile.findOne({ where: { id } });
-
-		if (profile === null) {
-			throw new HTTPError(`Could not found the profile with id ${id}!`, 404);
-		}
-
-		// Update a specific profile
+		const { userId } = req.params;
+		// Get user
+		const user = await database.User.findByPk(userId);
+		// Set profile
 		const model = req.body;
-		const updatedprofile = await database.profile.update(model, {
-			where: {
-				id,
-			},
-		});
+		await user.setProfile(model);
 
 		// Send response
-		res.status(200).json(updatedprofile);
+		res.status(200).json({ message: `Profile from user with id ${userId} has been updated.` });
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -117,23 +107,28 @@ const deleteprofile = async (req, res, next) => {
 		const profile = await database.profile.findOne({ where: { id } });
 
 		if (profile === null) {
-			throw new HTTPError(`Could not found the profile with id ${id}!`, 404);
+			throw new HTTPError(`Could not find the profile with id ${id}!`, 404);
 		}
 
 		// Delete a profile with specified id
-		const message = await database.profile.destroy({
+		await database.profile.destroy({
 			where: {
 				id,
 			},
 		});
 
 		// Send response
-		res.status(200).json(message);
+		res.status(200).json({ message: `Profile with id ${id} has been updated.` });
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
 };
 
 export {
-
+	getProfiles,
+	getProfileById,
+	getProfileByUserId,
+	createProfile,
+	updateProfile,
+	deleteprofile,
 };

@@ -13,6 +13,8 @@ import * as reviewController from '../controllers/review.controller';
 import * as userController from '../controllers/user.controller';
 import * as authController from '../controllers/auth.controller';
 import * as promotionController from '../controllers/promotion.controller';
+import * as profileController from '../controllers/profile.controller';
+import { adminAuth, viewAuth } from '../../middleware/authenticate.middleware';
 
 /*
 Make a router
@@ -99,7 +101,7 @@ router.get('/categories/:categoryId', categoryController.getCategoryById);
  *     summary: Get a specific existing category
  *     description: Get a specific existing category
  */
-router.post('/categories', categoryController.createCategory);
+router.post('/categories', adminAuth, categoryController.createCategory);
 /**
  * @swagger
  * /api/categories:
@@ -107,7 +109,7 @@ router.post('/categories', categoryController.createCategory);
  *     summary: Create a new category
  *     description: Create a new category
  */
-router.put('/categories/:categoryId', categoryController.updateCategory);
+router.put('/categories/:categoryId', adminAuth, categoryController.updateCategory);
 /**
  * @swagger
  * /api/categories:
@@ -115,16 +117,16 @@ router.put('/categories/:categoryId', categoryController.updateCategory);
  *     summary: Delete an existing category
  *     description: Delete an existing category
  */
-router.delete('/categories/:categoryId', categoryController.deleteCategory);
+router.delete('/categories/:categoryId', adminAuth, categoryController.deleteCategory);
 
 router.get('/products', productController.getProducts);
 router.get('/products/:id', productController.getProductById);
 router.get('/products/category/:categoryId', productController.getProductsByCategory);
 router.get('/products/:id/reviews', productController.getProductReviews);
 router.get('/products/:id/promotions', productController.getProductPromotions);
-router.post('/products', productController.createProduct);
-router.put('/products/:id', productController.updateProduct);
-router.delete('/products/:id', productController.deleteProduct);
+router.post('/products', adminAuth, productController.createProduct);
+router.put('/products/:id', adminAuth, productController.updateProduct);
+router.delete('/products/:id', adminAuth, productController.deleteProduct);
 
 /**
  * @swagger
@@ -164,7 +166,7 @@ router.delete('/products/:id', productController.deleteProduct);
  *                          description: The user role.
  *                          example: false
  */
-router.get('/users', userController.getUsers);
+router.get('/users', adminAuth, userController.getUsers);
 /**
  * @swagger
  * /api/users:
@@ -172,7 +174,7 @@ router.get('/users', userController.getUsers);
  *     summary: Get a specific user by user uuid
  *     description: Get a specific user by user uuid
  */
-router.get('/users/:id', userController.getUserById);
+router.get('/users/:id', viewAuth, userController.getUserById);
 
 /**
  * @swagger
@@ -181,7 +183,7 @@ router.get('/users/:id', userController.getUserById);
  *     summary: Create a new user
  *     description: Create a new user
  */
-router.post('/users', userController.createUser);
+router.post('/users', adminAuth, userController.createUser);
 
 /**
  * @swagger
@@ -190,7 +192,7 @@ router.post('/users', userController.createUser);
  *     summary: Update an existing user
  *     description: Update an existing user
  */
-router.put('/users/:id', userController.updateUser);
+router.put('/users/:id', viewAuth, userController.updateUser);
 
 /**
  * @swagger
@@ -199,27 +201,34 @@ router.put('/users/:id', userController.updateUser);
  *     summary: Delete an existing user
  *     description: Delete an existing user
  */
-router.delete('/users/:id', userController.deleteUser);
+router.delete('/users/:id', viewAuth, userController.deleteUser);
 
-router.get('/orders', orderController.getOrders);
+router.get('/orders', adminAuth, orderController.getOrders);
 router.get('/orders/:id', orderController.getOrderById);
-router.post('/orders/create/:userId', orderController.createOrder);
+router.post('/orders/create/:userId', viewAuth, orderController.createOrder);
 router.post('/orders/add/:id', orderController.addProductToOrder);
 router.put('/orders/:id', orderController.updateOrder);
 router.delete('/orders/:id', orderController.deleteOrder);
 
 router.get('/reviews', reviewController.getReviews);
 router.get('/reviews/:productId', reviewController.getReviewsByProductId);
-router.post('/reviews/:userId/:productId', reviewController.createReview);
+router.post('/reviews/:userId/:productId', viewAuth, reviewController.createReview);
 router.put('/reviews/:id', reviewController.updateReview);
 router.delete('/reviews/:id', reviewController.deleteReview);
 
 router.get('/promotions', promotionController.getPromotions);
 router.get('/promotions/:id', promotionController.getPromotionById);
 router.get('/promotions/product/:productId', promotionController.getPromotionsByProductId);
-router.post('/promotions/:productId', promotionController.createPromotion);
-router.put('/promotions/:id', promotionController.updatePromotion);
-router.delete('/promotions/:id', promotionController.deletePromotion);
+router.post('/promotions/:productId', adminAuth, promotionController.createPromotion);
+router.put('/promotions/:id', adminAuth, promotionController.updatePromotion);
+router.delete('/promotions/:id', adminAuth, promotionController.deletePromotion);
+
+router.get('/profiles', adminAuth, profileController.getProfiles);
+router.get('/profiles/:id', adminAuth, profileController.getProfileById);
+router.get('/profiles/users/:userId', viewAuth, profileController.getProfileByUserId);
+router.post('/profiles/:userId', viewAuth, profileController.createProfile);
+router.put('/profiles/:id', profileController.updateProfile);
+router.delete('/profiles/:id', adminAuth, profileController.deleteprofile);
 
 router.post('/auth/register', authController.register);
 router.post('/auth/login', authController.login);

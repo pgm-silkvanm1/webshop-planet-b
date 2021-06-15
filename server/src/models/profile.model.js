@@ -20,6 +20,10 @@ export default (sequelize) => {
 				type: DataTypes.STRING,
 				allowNull: false,
 			},
+			image: {
+				type: DataTypes.STRING,
+				allowNull: false,
+			},
 			street: {
 				type: DataTypes.STRING,
 				allowNull: false,

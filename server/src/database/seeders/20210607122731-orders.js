@@ -5,11 +5,10 @@ import database from '..';
 
 database.connect();
 
-const createOrders= async () => {
+const createOrders = async () => {
 	const users = await database.User.findAll();
-	
-	users.forEach(user => {
-		const date = new Date();
+
+	users.forEach((user) => {
 		const order = {
 			orderStatus: 'ordered',
 			totalPrice: faker.commerce.price(),
@@ -17,37 +16,35 @@ const createOrders= async () => {
 			paymentType: 'creditcard',
 		};
 
-		user.createOrder(order, { through: { selfGranted: false }});
-	
-	})
-
+		user.createOrder(order, { through: { selfGranted: false } });
+	});
 };
 
-const createOrderProducts= async () => {
+const createOrderProducts = async () => {
 	const orders = await database.Order.findAll();
 	const products = await database.Product.findAll();
-	
-	orders.forEach(order => {
-		let orderProducts = [];
+
+	orders.forEach((order) => {
+		const orderProducts = [];
 		const amount = Math.floor(Math.random() * 10);
 
-		for(let i = 0; i < amount; i++){
-			orderProducts.push(products[Math.floor(Math.random()*products.length-1)])
-		};
-		
-		orderProducts.forEach(product => {
-			order.addProduct(product, {through: { selfGranted: false }});
+		for (let i = 0; i < amount; i++) {
+			orderProducts.push(products[Math.floor(Math.random() * products.length - 1)]);
+		}
+
+		orderProducts.forEach((product) => {
+			order.addProduct(product, { through: { selfGranted: false } });
 		});
 	});
 };
 
 export default {
-	up: async (queryInterface, Sequelize) => {
+	up: async () => {
 		await createOrders();
 		await createOrderProducts();
 	},
 
-	down: async (queryInterface, Sequelize) => {
+	down: async (queryInterface) => {
 		await queryInterface.bulkDelete(database.Category.tableName, null, {});
 	},
 };

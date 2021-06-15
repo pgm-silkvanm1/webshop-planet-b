@@ -1,43 +1,54 @@
-import { handleHTTPError } from '../../utils';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import 'dotenv/config';
 import database from '../../database';
+import { handleHTTPError, HTTPError } from '../../utils';
 
-const register = async (req, res, next) => {
-	try {
-		// Get new user credentials from body of request
-		const user = req.body;
-
-        // Check if user already exists and respond accordingly
-        const userExists = await database.User.findOne({ where: { email: user.email } });
-        if (userExists) return res.json({ message: `User with email ${user.email} already exists` });
-
-        // Create a new user in the database with login credentials
-        const newUser = await database.User.create(user);
-        res.status(200).json({ message: `User with email ${newUser.email} has been registered.` });
-    } catch (error) {
-        handleHTTPError(error, next);
-	}
+const isValidPassword = async (user, password) => {
+	const match = await bcrypt.compare(password, user.password);
+	return match;
 };
 
 const login = async (req, res, next) => {
-    try {
-        // Get user login credentials from body of request
-        const user = req.body;
+	try {
+		const { email, password } = req.body;
 
-        // Check if user exists
-        const userExists = await database.User.findOne({ where: { email: user.email } });
-        if (!userExists) return res.json({ message: 'Email or password does not match!' });
-        // Check if user password matches existing user
-        if (userExists.password !== user.password) return res.json({ message: 'Email or password does not match!' });
+		const user = await database.User.findOne({ where: { email } });
 
+		if (!user) throw new HTTPError('Email or password does not match! bruh', 400);
+		if (!isValidPassword(user, password)) throw new HTTPError('Email or password does not match!', 400);
+		console.log(user.email);
+		const jwtToken = jwt.sign({ userId: user.id, email: user.email }, process.env.JWT_SECRET_KEY, { expiresIn: parseInt(process.env.JWT_LIFETIME, 10) });
 
+		res.status(200).json({
+			message: 'Succesfully logged in.',
+			token: jwtToken,
+			userId: user.id,
+			email: user.email,
+			admin: user.admin,
+		});
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
+};
 
-        res.status(200).json();
-    } catch (error) {
-        handleHTTPError(error, next);
-    }
+const register = async (req, res, next) => {
+	try {
+		const { email, password, admin } = req.body;
+
+		const userExists = await database.User.findOne({ where: { email } });
+
+		if (userExists) throw new HTTPError({ message: 'User with thah email already exists.' });
+
+		const newUser = { email, password, admin };
+		const addedUser = await database.User.create(newUser);
+		if (addedUser) res.status(200).json({ message: 'New user had been registered.' });
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
 };
 
 export {
-    login,
-    register,
+	login,
+	register,
 };

@@ -5,10 +5,12 @@ export default (sequelize) => {
 		static associate(models) {
 			this.belongsTo(models.Product, {
 				foreignKey: 'productId',
+				as: 'productReviews',
 			});
 
 			this.belongsTo(models.User, {
 				foreignKey: 'userId',
+				as: 'user',
 			});
 		}
 	}

@@ -12,6 +12,7 @@ import * as orderController from '../controllers/order.controller';
 import * as reviewController from '../controllers/review.controller';
 import * as userController from '../controllers/user.controller';
 import * as authController from '../controllers/auth.controller';
+import * as promotionController from '../controllers/promotion.controller';
 
 /*
 Make a router
@@ -80,7 +81,8 @@ Routes
  *                                      example: 2021-05-24T20:18:50.847Z
  *
  */
-router.get('/categories', categoryController.getSortedCategories);
+router.get('/categories', categoryController.getCategories);
+router.get('/categories/sorted', categoryController.getSortedCategories);
 /**
  * @swagger
  * /api/categories:
@@ -206,8 +208,18 @@ router.post('/orders/add/:id', orderController.addProductToOrder);
 router.put('/orders/:id', orderController.updateOrder);
 router.delete('/orders/:id', orderController.deleteOrder);
 
-router.get('/review', reviewController.getReviews);
-router.get('/review/:productId', reviewController.getReviewsByProductId);
+router.get('/reviews', reviewController.getReviews);
+router.get('/reviews/:productId', reviewController.getReviewsByProductId);
+router.post('/reviews/:userId/:productId', reviewController.createReview);
+router.put('/reviews/:id', reviewController.updateReview);
+router.delete('/reviews/:id', reviewController.deleteReview);
+
+router.get('/promotions', promotionController.getPromotions);
+router.get('/promotions/:id', promotionController.getPromotionById);
+router.get('/promotions/product/:productId', promotionController.getPromotionsByProductId);
+router.post('/promotions/:productId', promotionController.createPromotion);
+router.put('/promotions/:id', promotionController.updatePromotion);
+router.delete('/promotions/:id', promotionController.deletePromotion);
 
 router.post('/auth/register', authController.register);
 router.post('/auth/login', authController.login);

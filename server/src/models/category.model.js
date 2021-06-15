@@ -5,22 +5,23 @@ export default (sequelize) => {
 		static associate(models) {
 			this.belongsToMany(
 				models.Product,
-				{ 
+				{
 					through: 'ProductHasCategories',
 					as: 'products',
 					foreignKey: 'categoryId',
-				 });
-		};
-	};
+				},
+			);
+		}
+	}
 
 	Category.init(
-		{	
+		{
 			name: {
 				type: DataTypes.STRING,
-				allowNull: false
+				allowNull: false,
 			},
 			parentId: {
-				type: DataTypes.INTEGER
+				type: DataTypes.INTEGER,
 			},
 		},
 		{

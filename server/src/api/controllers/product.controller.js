@@ -47,9 +47,11 @@ const getProductById = async (req, res, next) => {
 				},
 				{
 					model: database.ProductReview,
+					as: 'reviews',
 				},
 				{
 					model: database.Promotion,
+					as: 'promotions',
 				},
 			],
 		});
@@ -108,7 +110,7 @@ const getProductReviews = async (req, res, next) => {
 		// Get product
 		const product = await database.Product.findOne({ id });
 		// Get all reviews associated with product
-		const reviews = await product.getProductReviews();
+		const reviews = await product.getReviews();
 
 		if (reviews === null) {
 			throw new HTTPError(`Could not find reviews from product with id ${id}!`, 404);

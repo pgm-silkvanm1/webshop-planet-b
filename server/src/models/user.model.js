@@ -17,7 +17,7 @@ export default (sequelize) => {
 
 			this.hasMany(models.ProductReview, {
 				foreignKey: 'userId',
-				as: 'productReviews',
+				as: 'reviews',
 			});
 		}
 	}
@@ -33,7 +33,8 @@ export default (sequelize) => {
 			},
 			password: {
 				type: DataTypes.STRING,
-				allowNull: false			},
+				allowNull: false,
+			},
       		email: {
 				  type: DataTypes.STRING,
 				  allowNull: false,

@@ -32,16 +32,52 @@
         });
       });
 
-      if (this.$productList !== null) {
-        this.$productList.addEventListener("click", (ev) => {
-          const basket =
-            ev.target.dataset.id ||
-            ev.target.parentNode.dataset.id ||
-            ev.target.parentNode.parentNode.dataset.id;
-          console.log(basket);
-        });
-      }
-    },
+(() => {
+    const app = {
+      init() {
+        this.cacheElements();
+        this.registerListeners();
+        this.basketPopUp();
+        this.hamburgerMenu();
+        this.webshopApi = new web();
+        this.printHomepage();
+        this.print();
+        this.getURL();
+      },
+      cacheElements() {
+        this.toTop = document.querySelector('.to-top');
+        this.$basket = document.querySelector('.basket__icon')
+        this.$popUp = document.querySelector('.basket__popup')
+        this.$close = document.querySelector('.basket__close')
+        this.$continue = document.querySelector('.basket__continue')
+        this.$hamburger= document.querySelector('.nav__hamburger')
+        this.$navList= document.querySelector('.nav__list')
+        this.$products = document.querySelectorAll('.row__products')
+        this.$discount = document.querySelector('.row__discount')
+        this.$productList = document.querySelector('.product__container')
+            
+      },
+
+  
+      registerListeners() {
+        this.toTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+            });
+        })
+
+        if(this.$productList !== null){
+          this.$productList.addEventListener('click', ev => {
+            const basket = ev.target.dataset.id || ev.target.parentNode.dataset.id || ev.target.parentNode.parentNode.dataset.id;
+            console.log(basket)
+        })
+
+        }
+        
+        
+      },
 
     basketPopUp() {
       this.$basket.addEventListener("click", () => {

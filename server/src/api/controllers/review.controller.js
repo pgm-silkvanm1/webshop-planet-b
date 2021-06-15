@@ -2,16 +2,16 @@ import { handleHTTPError, HTTPError } from '../../utils';
 import database from '../../database';
 
 /*
-Get all orders
+Get all reviews
 */
 const getReviews = async (req, res, next) => {
 	try {
-		// Get orders from database
-		let orders = null;		
-        orders = await database.Review.findAll();
+		// Get reviews from database
+		let reviews = null;
+		reviews = await database.ProductReview.findAll();
 
 		// Send response
-		res.status(200).json(orders);
+		res.status(200).json(reviews);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -22,16 +22,18 @@ Get a specific order id
 */
 const getReviewsByProductId = async (req, res, next) => {
 	try {
-		// Get order id parameter
-		const { id } = req.params;
-		// Get specific order from database
-		const order = await database.Review.findOne({where: {id: id}});
+		// Get review id parameter
+		const { productId } = req.params;
+		// Get product
+		const product = await database.Product.findOne({ productId });
+		// Get specific review from database
+		const reviews = await product.getProductReviews();
 
-		if (order === null) {
-			throw new HTTPError(`Could not found the order with id ${id}!`, 404);
+		if (reviews === null) {
+			throw new HTTPError(`Could not find reviews from product with id ${productId}!`, 404);
 		}
 		// Send response
-		res.status(200).json(order);
+		res.status(200).json(reviews);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -39,10 +41,12 @@ const getReviewsByProductId = async (req, res, next) => {
 
 
 /*
-Create a new order
+Create a new review
 */
 const createReview = async (req, res, next) => {
 	try {
+		// Get product id and user id from request body
+		const { productId, userId } = req.params;
 		// Get body from response
 		const model = req.body;
 		// Create a post
@@ -55,30 +59,30 @@ const createReview = async (req, res, next) => {
 };
 
 /*
-Update an exisiting order
+Update an exisiting review
 */
 const updateReview = async (req, res, next) => {
 	try {
 		// Get id parameter
 		const { id } = req.params;
 		console.log(id);
-		// Get specific order from database
-		const order = await database.Review.findOne({where: { id: id }});
+		// Get specific review from database
+		const review = await database.Review.findOne({ where: { id } });
 
-		if (order === null) {
-			throw new HTTPError(`Could not found the order with id ${id}!`, 404);
+		if (review === null) {
+			throw new HTTPError(`Could not found the review with id ${id}!`, 404);
 		}
 
-		// Update a specific order
+		// Update a specific review
 		const model = req.body;
-		const updatedOrder = await database.Review.update(model, {
+		const updatedReview = await database.Review.update(model, {
 			where: {
-				id: id,
+				id,
 			},
 		});
 
 		// Send response
-		res.status(200).json(updatedOrder);
+		res.status(200).json(updatedReview);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -92,7 +96,7 @@ const deleteReview = async (req, res, next) => {
 		// Get id parameter
 		const { id } = req.params;
 		// Get specific order from database
-		const order = await database.Review.findOne({where: {id: id}});
+		const order = await database.Review.findOne({ where: { id } });
 
 		if (order === null) {
 			throw new HTTPError(`Could not found the order with id ${id}!`, 404);
@@ -101,7 +105,7 @@ const deleteReview = async (req, res, next) => {
 		// Delete a order with specified id
 		const message = await database.Review.destroy({
 			where: {
-				id: id,
+				id,
 			},
 		});
 
@@ -113,5 +117,5 @@ const deleteReview = async (req, res, next) => {
 };
 
 export {
-	
+	getReviews, getReviewsByProductId, createReview, updateReview, deleteReview,
 };

@@ -4,24 +4,24 @@ export default (sequelize) => {
 	class ProductReview extends Model {
 		static associate(models) {
 			this.belongsTo(models.Product, {
-				foreignKey: 'productId'
+				foreignKey: 'productId',
 			});
 
 			this.belongsTo(models.User, {
-				foreignKey: 'userId'
+				foreignKey: 'userId',
 			});
 		}
 	}
 
 	ProductReview.init(
-		{	
+		{
 			description: {
 				type: DataTypes.STRING,
-                allowNull: false
+				allowNull: false,
 			},
-            rating: {
+			rating: {
 				type: DataTypes.NUMBER,
-                allowNull: false
+				allowNull: false,
 			},
 		},
 		{

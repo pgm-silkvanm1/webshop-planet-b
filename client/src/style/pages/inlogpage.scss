@@ -1,6 +1,6 @@
 .inlogpage{
     margin-bottom: 4rem;
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
 
     h1{
@@ -13,7 +13,7 @@
        &__form{
            display: flex;
            flex-direction: column;
-           width: 50%;
+           width: 70%;
            margin: 0 auto;
           
            label{
@@ -29,6 +29,7 @@
                background: $beige;
                border: 1px solid black;
                margin-bottom: 0.4rem;
+
            }
 
        }
@@ -46,3 +47,21 @@
 
 }
 
+
+
+
+@media (min-width: 60rem) {
+    .inlogpage{
+        width: 60%;
+        .container__signin {
+            &__form{
+               width:  50%;
+             
+            }
+   
+     
+    }
+ }
+  
+  } 
+  

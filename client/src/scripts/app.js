@@ -27,7 +27,8 @@
       this.$productList = document.querySelector(".product__container");
       this.$detailContainer = document.querySelector(".container__detail");
       this.$detailReviews = document.querySelector(".reviews");
-      this.$searchBar = document.getElementById('searchbar');
+      this.$searchBar = document.getElementById("searchbar");
+      this.$searchList = document.querySelector(".searchlist__item");
 
     },
 
@@ -191,7 +192,7 @@
       const categoryPath = categoryName.pathname.replaceAll('/', '')
 
       const pageCategory = this.categories.find (category => category.name === categoryPath)
-      console.log(pageCategory.id)
+      // console.log(pageCategory.id)
       
       
 
@@ -227,18 +228,30 @@
     },
 
     async searchBar () {
-      const searchlist = await this.webshopApi.getProducts();
+      const products = await this.webshopApi.getProducts();
 
       this.$searchBar.addEventListener('keyup', (e) => {
         const searchString = e.target.value.toLowerCase();
-        const filteredProducts = searchlist.filter(allProducts => {
+        const filteredProducts = products.filter(fetchedproduct => {
           return (
-            allProducts.name.includes(searchString) 
+            fetchedproduct.name.toLowerCase().includes(searchString) 
           );
         });
-        console.log(filteredProducts)
+        this.$searchList.innerHTML += filteredProducts.map(product => {
+          return `<li>
+          <a href = '/pages/detailpage?id=${product.id}' >
+              <img src="${product.image}" loading="lazy" />
+              
+              <div class="product__main">
+                <p class = "product__main__name">${product.name}</p> 
+                <p class = "product__main__price">€${product.price}</p> 
+              </div>
+            </a>
+          </li>`;
+        }).join("");
+
       });
-  }
+    }
 }
   app.init();
 })();

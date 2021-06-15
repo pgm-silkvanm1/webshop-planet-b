@@ -1,12 +1,14 @@
 const WEBSHOP_BASE_PATH = 'http://localhost:8080/api';
 
+let products = [];
+
 function web() {
   this.getProducts = async () => {   
     try{
       const response = await fetch (`${WEBSHOP_BASE_PATH}/products`);
-      const data = await response.json();
-      console.log(data)
-      return data;
+      const products = await response.json();
+      // console.log(products)
+      return products;
     } catch(error){
       console.log('an error',error)
 

@@ -4,28 +4,29 @@ export default (sequelize) => {
 	class Promotion extends Model {
 		static associate(models) {
 			this.belongsTo(models.Product, {
-				foreignKey: 'productId'
+				foreignKey: 'productId',
+				as: 'product',
 			});
 		}
 	}
 
 	Promotion.init(
-		{	
+		{
 			description: {
 				type: DataTypes.STRING,
-                allowNull: false
+				allowNull: false,
 			},
-            voucher: {
+			voucher: {
 				type: DataTypes.UUID,
-                allowNull: false
+				allowNull: false,
 			},
-            from: {
+			from: {
 				type: DataTypes.NUMBER,
-                allowNull: false
+				allowNull: false,
 			},
-            to: {
+			to: {
 				type: DataTypes.NUMBER,
-                allowNull: false
+				allowNull: false,
 			},
 		},
 		{

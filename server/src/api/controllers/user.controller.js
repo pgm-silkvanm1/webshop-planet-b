@@ -23,7 +23,7 @@ const getUsers = async (req, res, next) => {
 				},
 				{
 					model: database.ProductReview,
-					as: 'productReviews',
+					as: 'reviews',
 				},
 			],
 		});
@@ -59,7 +59,7 @@ const getUserById = async (req, res, next) => {
 				},
 				{
 					model: database.ProductReview,
-					as: 'productReviews',
+					as: 'reviews',
 				},
 			],
 		});

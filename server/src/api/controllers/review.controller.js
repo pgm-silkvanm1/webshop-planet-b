@@ -27,7 +27,7 @@ const getReviewsByProductId = async (req, res, next) => {
 		// Get product
 		const product = await database.Product.findOne({ productId });
 		// Get specific review from database
-		const reviews = await product.getProductReviews();
+		const reviews = await product.getReviews();
 
 		if (reviews === null) {
 			throw new HTTPError(`Could not find reviews from product with id ${productId}!`, 404);
@@ -39,7 +39,6 @@ const getReviewsByProductId = async (req, res, next) => {
 	}
 };
 
-
 /*
 Create a new review
 */
@@ -50,9 +49,12 @@ const createReview = async (req, res, next) => {
 		// Get body from response
 		const model = req.body;
 		// Create a post
-		const createdModel = await database.Review.create(model);
-		// Send response
-		res.status(201).json(createdModel);
+		const user = await database.User.findByPk(userId);
+		const product = await database.Product.findByPk(productId);
+		const newReview = await user.createReview(model);
+		console.log(newReview);
+		await product.addReview(newReview);		// Send response
+		res.status(201).json(newReview);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -67,7 +69,7 @@ const updateReview = async (req, res, next) => {
 		const { id } = req.params;
 		console.log(id);
 		// Get specific review from database
-		const review = await database.Review.findOne({ where: { id } });
+		const review = await database.ProductReview.findOne({ where: { id } });
 
 		if (review === null) {
 			throw new HTTPError(`Could not found the review with id ${id}!`, 404);
@@ -75,14 +77,14 @@ const updateReview = async (req, res, next) => {
 
 		// Update a specific review
 		const model = req.body;
-		const updatedReview = await database.Review.update(model, {
+		await database.ProductReview.update(model, {
 			where: {
 				id,
 			},
 		});
 
 		// Send response
-		res.status(200).json(updatedReview);
+		res.status(200).json({ message: `Product with id ${id} has been updated.` });
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -96,21 +98,21 @@ const deleteReview = async (req, res, next) => {
 		// Get id parameter
 		const { id } = req.params;
 		// Get specific order from database
-		const order = await database.Review.findOne({ where: { id } });
+		const order = await database.ProductReview.findOne({ where: { id } });
 
 		if (order === null) {
 			throw new HTTPError(`Could not found the order with id ${id}!`, 404);
 		}
 
 		// Delete a order with specified id
-		const message = await database.Review.destroy({
+		await database.ProductReview.destroy({
 			where: {
 				id,
 			},
 		});
 
 		// Send response
-		res.status(200).json(message);
+		res.status(200).json({ message: `Product with id ${id} has been deleted.` });
 	} catch (error) {
 		handleHTTPError(error, next);
 	}

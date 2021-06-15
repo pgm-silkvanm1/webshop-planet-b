@@ -4,44 +4,45 @@ export default (sequelize) => {
 	class Profile extends Model {
 		static associate(models) {
 			this.belongsTo(models.User, {
-				foreignKey: 'userId'
-			})
+				foreignKey: 'userId',
+				as: 'user',
+			});
 		}
 	}
 
 	Profile.init(
 		{
-            firstName: {
-				type: DataTypes.STRING, 
-				allowNull: false
+			firstName: {
+				type: DataTypes.STRING,
+				allowNull: false,
 			},
-            lastName: {
-				type: DataTypes.STRING, 
-				allowNull: false
+			lastName: {
+				type: DataTypes.STRING,
+				allowNull: false,
 			},
-            street: {
-				type: DataTypes.STRING, 
-				allowNull: false
+			street: {
+				type: DataTypes.STRING,
+				allowNull: false,
 			},
-            zipcode: {
-				type: DataTypes.NUMBER, 
-				allowNull: false
+			zipcode: {
+				type: DataTypes.NUMBER,
+				allowNull: false,
 			},
-            city: {
-				type: DataTypes.STRING, 
-				allowNull: false
+			city: {
+				type: DataTypes.STRING,
+				allowNull: false,
 			},
-            country: {
-				type: DataTypes.STRING, 
-				allowNull: false
+			country: {
+				type: DataTypes.STRING,
+				allowNull: false,
 			},
-            dayOfBirth: {
-				type: DataTypes.NUMBER, 
-				allowNull: false
+			dayOfBirth: {
+				type: DataTypes.NUMBER,
+				allowNull: false,
 			},
-            phoneNumber: {
-				type: DataTypes.STRING, 
-				allowNull: false
+			phoneNumber: {
+				type: DataTypes.STRING,
+				allowNull: false,
 			},
 
 		},

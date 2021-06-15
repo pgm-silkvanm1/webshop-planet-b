@@ -2,70 +2,73 @@ import { handleHTTPError, HTTPError } from '../../utils';
 import database from '../../database';
 
 /*
-Get all orders
+Get all profiles
 */
-const getOrders = async (req, res, next) => {
+const getProfiles = async (req, res, next) => {
 	try {
-		// Get orders from database
-		let orders = null;		
-        orders = await database.Order.findAll();
+		// Get profiles from database
+		let profiles = null;
+		profiles = await database.Profile.findAll();
 
 		// Send response
-		res.status(200).json(orders);
+		res.status(200).json(profiles);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
 };
 
 /*
-Get a specific order id
+Get a specific profile id
 */
-const getOrdersByorderId = async (req, res, next) => {
+const getProfileByUserId = async (req, res, next) => {
 	try {
-		// Get order id parameter
-		const { id } = req.params;
-		// Get specific order from database
-		const order = await database.order.findOne({where: {id: id}});
+		// Get profile id parameter
+		const { userId } = req.params;
+		// Get specific profile from database
+		const profile = await database.Profile.findOne({ where: { userId } });
 
-		if (order === null) {
-			throw new HTTPError(`Could not found the order with id ${id}!`, 404);
+		if (profile === null) {
+			throw new HTTPError(`Could not find the profile from user with id ${userId}!`, 404);
 		}
 		// Send response
-		res.status(200).json(order);
+		res.status(200).json(profile);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
 };
 
 /*
-Get a specific order id
+Get a specific profile id
 */
-const getOrderById = async (req, res, next) => {
+const getProfileById = async (req, res, next) => {
 	try {
-		// Get order id parameter
+		// Get profile id parameter
 		const { id } = req.params;
-		// Get specific order from database
-		const order = await database.Order.findOne({where: {id: id}});
+		// Get specific profile from database
+		const profile = await database.Profile.findByPk({ where: { id } });
 
-		if (order === null) {
-			throw new HTTPError(`Could not found the order with id ${id}!`, 404);
+		if (profile === null) {
+			throw new HTTPError(`Could not find the profile with id ${id}!`, 404);
 		}
 		// Send response
-		res.status(200).json(order);
+		res.status(200).json(profile);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
 };
 
 /*
-Create a new order
+Create a new profile
 */
-const createOrder = async (req, res, next) => {
+const createProfile = async (req, res, next) => {
 	try {
+		const { userId } = req.params;
 		// Get body from response
 		const model = req.body;
-		// Create a post
-		const createdModel = await database.Order.create(model);
+		// Get user
+		const user = await database.User.findByPk(userId);
+		// Create new profile
+		const createdModel = await user.createProfile(model);
 		// Send response
 		res.status(201).json(createdModel);
 	} catch (error) {
@@ -74,53 +77,53 @@ const createOrder = async (req, res, next) => {
 };
 
 /*
-Update an exisiting order
+Update an exisiting profile
 */
-const updateOrder = async (req, res, next) => {
+const updateProfile = async (req, res, next) => {
 	try {
 		// Get id parameter
 		const { id } = req.params;
 		console.log(id);
-		// Get specific order from database
-		const order = await database.Order.findOne({where: { id: id }});
+		// Get specific profile from database
+		const profile = await database.Profile.findOne({ where: { id } });
 
-		if (order === null) {
-			throw new HTTPError(`Could not found the order with id ${id}!`, 404);
+		if (profile === null) {
+			throw new HTTPError(`Could not found the profile with id ${id}!`, 404);
 		}
 
-		// Update a specific order
+		// Update a specific profile
 		const model = req.body;
-		const updatedOrder = await database.Order.update(model, {
+		const updatedprofile = await database.profile.update(model, {
 			where: {
-				id: id,
+				id,
 			},
 		});
 
 		// Send response
-		res.status(200).json(updatedOrder);
+		res.status(200).json(updatedprofile);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
 };
 
 /*
-Delete an exisiting order
+Delete an exisiting profile
 */
-const deleteOrder = async (req, res, next) => {
+const deleteprofile = async (req, res, next) => {
 	try {
 		// Get id parameter
 		const { id } = req.params;
-		// Get specific order from database
-		const order = await database.order.findOne({where: {id: id}});
+		// Get specific profile from database
+		const profile = await database.profile.findOne({ where: { id } });
 
-		if (order === null) {
-			throw new HTTPError(`Could not found the order with id ${id}!`, 404);
+		if (profile === null) {
+			throw new HTTPError(`Could not found the profile with id ${id}!`, 404);
 		}
 
-		// Delete a order with specified id
-		const message = await database.Order.destroy({
+		// Delete a profile with specified id
+		const message = await database.profile.destroy({
 			where: {
-				id: id,
+				id,
 			},
 		});
 
@@ -132,5 +135,5 @@ const deleteOrder = async (req, res, next) => {
 };
 
 export {
-	
+
 };

@@ -7,8 +7,8 @@ Get all promotions
 const getPromotions = async (req, res, next) => {
 	try {
 		// Get promotions from database
-		let promotions = null;		
-        promotions = await database.Promotion.findAll();
+		let promotions = null;
+		promotions = await database.Promotion.findAll();
 
 		// Send response
 		res.status(200).json(promotions);
@@ -20,18 +20,24 @@ const getPromotions = async (req, res, next) => {
 /*
 Get a specific promotion id
 */
-const getPromotionByProductId = async (req, res, next) => {
+const getPromotionsByProductId = async (req, res, next) => {
 	try {
-		// Get promotion id parameter
-		const { id } = req.params;
-		// Get specific promotion from database
-		const promotion = await database.Promotion.findOne({where: {id: id}});
+		// Get product id parameter
+		const { productId } = req.params;
+		// Get specific product from database
+		const product = await database.Product.findByPk(productId);
+		// Get all promotions associated with the product
+		const promotions = await product.getPromotions();
 
-		if (promotion === null) {
-			throw new HTTPError(`Could not found the promotion with id ${id}!`, 404);
+		if (product === null) {
+			throw new HTTPError(`Could not find the promotion with id ${productId}!`, 404);
+		}
+
+		if (promotions === null || promotions.length === 0) {
+			throw new HTTPError(`Product with id ${productId} has no promotions`, 404);
 		}
 		// Send response
-		res.status(200).json(promotion);
+		res.status(200).json(promotions);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -45,10 +51,10 @@ const getPromotionById = async (req, res, next) => {
 		// Get promotion id parameter
 		const { id } = req.params;
 		// Get specific promotion from database
-		const promotion = await database.Promotion.findOne({where: {id: id}});
+		const promotion = await database.Promotion.findOne({ where: { id } });
 
 		if (promotion === null) {
-			throw new HTTPError(`Could not found the promotion with id ${id}!`, 404);
+			throw new HTTPError(`Could not find the promotion with id ${id}!`, 404);
 		}
 		// Send response
 		res.status(200).json(promotion);
@@ -62,12 +68,14 @@ Create a new promotion
 */
 const createPromotion = async (req, res, next) => {
 	try {
+		const { productId } = req.params;
 		// Get body from response
 		const model = req.body;
-		// Create a post
-		const createdModel = await database.Promotion.create(model);
+
+		const product = await database.Product.findByPk(productId);
+		await product.createPromotion(model);
 		// Send response
-		res.status(201).json(createdModel);
+		res.status(201).json(model);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -82,7 +90,7 @@ const updatePromotion = async (req, res, next) => {
 		const { id } = req.params;
 		console.log(id);
 		// Get specific promotion from database
-		const promotion = await database.Promotion.findOne({where: { id: id }});
+		const promotion = await database.Promotion.findOne({ where: { id } });
 
 		if (promotion === null) {
 			throw new HTTPError(`Could not found the promotion with id ${id}!`, 404);
@@ -90,14 +98,14 @@ const updatePromotion = async (req, res, next) => {
 
 		// Update a specific promotion
 		const model = req.body;
-		const updatedPromotion = await database.Promotion.update(model, {
+		await database.Promotion.update(model, {
 			where: {
-				id: id,
+				id,
 			},
 		});
 
 		// Send response
-		res.status(200).json(updatedPromotion);
+		res.status(200).json({ message: `Promotion with id ${id} has been updated` });
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -111,26 +119,31 @@ const deletePromotion = async (req, res, next) => {
 		// Get id parameter
 		const { id } = req.params;
 		// Get specific promotion from database
-		const promotion = await database.Promotion.findOne({where: {id: id}});
+		const promotion = await database.Promotion.findOne({ where: { id } });
 
 		if (promotion === null) {
 			throw new HTTPError(`Could not found the promotion with id ${id}!`, 404);
 		}
 
 		// Delete a promotion with specified id
-		const message = await database.Order.destroy({
+		await database.Order.destroy({
 			where: {
-				id: id,
+				id,
 			},
 		});
 
 		// Send response
-		res.status(200).json(message);
+		res.status(200).json({ message: `Promotion with id ${id} has been deleted` });
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
 };
 
 export {
-	
+	getPromotions,
+	getPromotionById,
+	getPromotionsByProductId,
+	createPromotion,
+	updatePromotion,
+	deletePromotion,
 };

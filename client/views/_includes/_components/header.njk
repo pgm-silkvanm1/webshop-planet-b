@@ -1,0 +1,74 @@
+
+        <header class = "container">
+
+        <a href="/index.html"><img src="/assets/img/logo.png"/></a>
+
+        
+        <nav>
+                 {{ collections.all | eleventyNavigation | eleventyNavigationToHtml({
+                        listClass:"nav__list",
+                        listItemHasChildrenClass:"extra-menu"
+                 }) | safe }}
+
+            <div class="small__menu">
+                <svg class="nav__hamburger" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 24h-19A2.503 2.503 0 010 21.5v-19C0 1.122 1.121 0 2.5 0h19C22.879 0 24 1.122 24 2.5v19c0 1.378-1.121 2.5-2.5 2.5zM2.5 1C1.673 1 1 1.673 1 2.5v19c0 .827.673 1.5 1.5 1.5h19c.827 0 1.5-.673 1.5-1.5v-19c0-.827-.673-1.5-1.5-1.5z"/><path d="M16.5 8h-9a.5.5 0 010-1h9a.5.5 0 010 1zM16.5 12.5h-9a.5.5 0 010-1h9a.5.5 0 010 1zM16.5 17h-9a.5.5 0 010-1h9a.5.5 0 010 1z"/></svg>
+            </div>
+
+            <div class = "nav__practical">
+
+                <form>
+                    <input type="text" placeholder="Search" class="nav__practical__form--text" id="searchbar">
+                    <input type="submit" placeholder="" value=" " class="nav__practical__form--icon">
+                </form>
+
+                <div class="nav__practical__icons">
+                <a href= '/inlog'>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38.382" height="40.652" viewBox="0 0 38.382 40.652">
+                    <defs>
+                    <clipPath id="clip-path">
+                    <rect id="Rectangle_78" data-name="Rectangle 78" width="38.382" height="27.326" transform="translate(38.382 27.326) rotate(180)" fill="none"/>
+                    </clipPath>
+                    </defs>
+                    <g id="login" transform="translate(0 1)">
+                    <circle id="Ellipse_24" data-name="Ellipse 24" cx="6.064" cy="6.064" r="6.064" transform="translate(13.172)" fill="none" stroke="#aa9db1" stroke-miterlimit="10" stroke-width="2"/>
+                    <g id="Group_103" data-name="Group 103" transform="translate(0 12.326)" clip-path="url(#clip-path)">
+                    <path id="Path_65" data-name="Path 65" d="M137.169,342.229a.409.409,0,0,1-.31.155c-3.269,3.644-5.4,9.6-5.4,16.334,0,11.094,5.785,20.087,12.92,20.087s12.92-8.993,12.92-20.087-5.785-20.087-12.92-20.087a9.708,9.708,0,0,0-6.6,2.817A9.04,9.04,0,0,1,137.169,342.229Z" transform="translate(-124.957 -334.414)" fill="none" stroke="#aa9db1" stroke-miterlimit="10" stroke-width="2"/>
+                    </g>
+                    </g>
+                    </svg>
+                </a>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="39.231" height="42.751" viewBox="0 0 39.231 42.751">
+                    <g id="Group_93" data-name="Group 93" transform="translate(0.5 0.5)">
+                        <path id="Shape" d="M24.483,40.358h6.262a.7.7,0,0,0,.492-.2l8.35-8.35a.7.7,0,0,0,.2-.492V3.479A3.483,3.483,0,0,0,36.312,0H8.479A3.483,3.483,0,0,0,5,3.479V15.308a.7.7,0,0,0,1.392,0V3.479A2.088,2.088,0,0,1,8.479,1.392H36.312A2.088,2.088,0,0,1,38.4,3.479V30.617H33.529A3.483,3.483,0,0,0,30.05,34.1v4.871H24.483a.7.7,0,1,0,0,1.392Zm9.046-8.35h3.887l-5.974,5.974V34.1A2.088,2.088,0,0,1,33.529,32.008Z" transform="translate(-1.561)" fill="#aa9db1" stroke="#aa9db1" stroke-width="1"/>
+                        <path id="Shape-2" data-name="Shape" d="M11.7,7.392h1.392a.7.7,0,1,0,0-1.392H11.7a.7.7,0,1,0,0,1.392Z" transform="translate(-3.385 -1.825)" fill="#aa9db1" stroke="#aa9db1" stroke-width="1"/>
+                        <path id="Shape-3" data-name="Shape" d="M38.571,6H17.7a.7.7,0,0,0,0,1.392H38.571a.7.7,0,0,0,0-1.392Z" transform="translate(-5.21 -1.825)" fill="#aa9db1" stroke="#aa9db1" stroke-width="1"/>
+                        <path id="Shape-4" data-name="Shape" d="M11.7,13.392h1.392a.7.7,0,1,0,0-1.392H11.7a.7.7,0,1,0,0,1.392Z" transform="translate(-3.385 -3.65)" fill="#aa9db1" stroke="#aa9db1" stroke-width="1"/>
+                        <path id="Shape-5" data-name="Shape" d="M17.7,13.392h16A.7.7,0,0,0,33.7,12h-16a.7.7,0,0,0,0,1.392Z" transform="translate(-5.21 -3.65)" fill="#aa9db1" stroke="#aa9db1" stroke-width="1"/>
+                        <path id="Shape-6" data-name="Shape" d="M11.7,19.392h1.392a.7.7,0,1,0,0-1.392H11.7a.7.7,0,1,0,0,1.392Z" transform="translate(-3.385 -5.475)" fill="#aa9db1" stroke="#aa9db1" stroke-width="1"/>
+                        <path id="Shape-7" data-name="Shape" d="M17.7,19.392H28.829a.7.7,0,0,0,0-1.392H17.7a.7.7,0,0,0,0,1.392Z" transform="translate(-5.21 -5.475)" fill="#aa9db1" stroke="#aa9db1" stroke-width="1"/>
+                        <path id="Shape-8" data-name="Shape" d="M50.392,20.7A.7.7,0,1,0,49,20.7v9.742a.7.7,0,1,0,1.392,0Z" transform="translate(-14.944 -6.083)" fill="#aa9db1"/>
+                        <path id="Shape-9" data-name="Shape" d="M49.7,38a.7.7,0,0,0-.7.7v1.392a.7.7,0,0,0,1.392,0V38.7A.7.7,0,0,0,49.7,38Z" transform="translate(-14.944 -11.558)" fill="#aa9db1"/>
+                        <path id="Shape-10" data-name="Shape" d="M13.393,49.349a.7.7,0,0,0,.425,0c9.843-3.157,13.336-10.367,13.336-15.581,0-4.865-3.131-8.676-7.123-8.676a9.411,9.411,0,0,0-6.427,2.554,9.413,9.413,0,0,0-6.427-2.554c-3.993,0-7.122,3.81-7.122,8.676C.057,38.982,3.549,46.192,13.393,49.349ZM7.179,26.484a8.094,8.094,0,0,1,5.887,2.605.694.694,0,0,0,1.077,0,8.093,8.093,0,0,1,5.887-2.605c3.213,0,5.731,3.2,5.731,7.284,0,4.709-3.19,11.225-12.158,14.187C4.638,44.993,1.449,38.477,1.449,33.768c0-4.085,2.517-7.284,5.73-7.284Z" transform="translate(-0.057 -7.632)" fill="#aa9db1" stroke="#aa9db1" stroke-width="1"/>
+                    </g>
+                    </svg>
+
+                    <div class="basket__icon">
+                        <svg id="shopping-basket" xmlns="http://www.w3.org/2000/svg" width="46.824" height="41.708" viewBox="0 0 46.824 41.708">
+                        <path id="shopping-basket-2" data-name="shopping-basket" d="M44.2,41.075H39.466L32.88,28.636a1.375,1.375,0,0,0-2.431,1.287l5.9,11.153H10.462l5.9-11.153a1.375,1.375,0,0,0-2.431-1.287L7.35,41.075H2.627A2.63,2.63,0,0,0,0,43.7v3.055a2.63,2.63,0,0,0,2.446,2.62L7.059,68.558A1.375,1.375,0,0,0,8.4,69.612H38.419a1.375,1.375,0,0,0,1.337-1.053L44.38,49.377a2.63,2.63,0,0,0,2.444-2.62V43.7A2.63,2.63,0,0,0,44.2,41.075ZM2.75,43.826H44.074v2.808H2.75ZM39.775,56.743H33.754l.919-7.359h6.876ZM24.789,66.861V59.493h5.85l-.92,7.368Zm-7.68,0-.921-7.368h5.851v7.368ZM5.276,49.384h6.877l.92,7.359H7.046Zm9.648,0h7.114v7.359H15.844Zm9.865,7.359V49.384H31.9l-.919,7.359ZM7.708,59.493h5.708l.921,7.368H9.48Zm29.628,7.368H32.491l.92-7.368h5.7Z" transform="translate(0 -27.904)" fill="#aa9db1"/>
+                        </svg>
+                    </div>
+                     {% include "./basket.njk" %}
+
+                </div>
+            
+
+              
+
+            </div>
+
+               
+        </nav>
+
+        </header>
+    

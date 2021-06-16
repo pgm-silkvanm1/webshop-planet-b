@@ -1,0 +1,219 @@
+header{
+  img{
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+  }
+  nav {
+    .small__menu {
+      margin-right: 1rem;
+      margin-top: 0.2rem;
+    }
+  }
+}
+
+.nav__hamburger{
+  width: 3rem;
+  position: relative;
+  display: block;
+  fill: $beige;
+  
+}
+@media (min-width: 70rem){
+  .nav__hamburger{
+  opacity: 0;
+  position: absolute;    
+  overflow: hidden;
+  top: 100vw;
+
+  }
+}
+
+.nav__list{
+  text-align: center;
+  position: absolute;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  display: none;
+  top: 100vw;
+  flex-direction: row;
+
+}
+
+.nav__list.open{
+  display: flex;
+  flex-direction: row;
+  top: auto;
+  background-color: #fff;
+  align-items: center;
+  margin-top: 3.5rem;
+  max-width: 100%;
+  padding: 0;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  z-index:666;
+  flex-direction: column;
+
+
+}
+
+
+
+
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 0 auto;
+  max-width: 100%;
+ 
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  li { 
+    display: inline-block; 
+    font-size: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  a {
+    padding: 0 12px;
+    text-decoration: none;
+    color: $font-color;
+    font-weight: bold;
+  }
+}
+
+nav a:hover{
+  color: $beige;
+  transition: all ease 0.2s;
+
+}
+
+
+.nav__practical{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+
+  form{
+    border: 1px solid rgba(0, 0, 0, 0.322);
+    display: flex;
+    align-items: baseline;
+    padding: 0.2rem;
+    width: 70%;
+  }
+ &__form{
+  
+ 
+  &--text{
+    height: 2rem;
+    border: none;
+    font-size: 1rem;
+  }
+   &--icon{
+    height: 2rem;
+    width: 2.5rem;
+    background-image: url("https://image.flaticon.com/icons/png/512/622/622669.png");
+    background-size: 1.6rem;
+    background-repeat: no-repeat;
+    border: none;
+    background-position: center;
+    background-color: white;
+    
+     
+   }
+  
+ }
+ &__icons{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   svg{
+     padding: 0.3rem;
+     width: 2rem;
+   }
+
+ }
+
+}
+
+@media(min-width: 50rem){
+  .nav__practical{
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    margin: 0;
+  }
+}
+
+@media (min-width: 70rem){
+  nav{
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .nav__list{
+    display: flex;
+    text-align: center;
+    position: relative; 
+    flex-wrap: nowrap; 
+    top: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+
+  .nav__list ul{
+    flex-direction: row;
+    justify-content: flex-start;
+
+  }
+
+  .nav__list li{
+    padding-bottom: 0;
+  }
+
+
+
+}
+
+.basket__icon{
+  cursor: pointer;
+}
+
+.basket__close{
+  cursor: pointer;
+}
+
+.extra-menu ul{
+  display: flex;
+  flex-direction: column;
+  li{
+    font-size: 1rem;
+    transition: all ease 0.3s;
+  }
+  
+}
+
+
+.extra-menu li{
+  display: none;
+}
+
+nav li:hover li{
+display: block;
+align-items: flex-start;
+}

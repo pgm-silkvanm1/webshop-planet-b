@@ -1,0 +1,260 @@
+.contact-us {
+    margin-bottom: 5rem;
+    font-family: 'Poppins', sans-serif;
+    color: $greenish;
+
+    h1{
+        text-align: center;
+        color: $greenish;
+        font-family: 'Amatic SC', cursive;
+    }
+
+    .stores{
+        display: flex;
+        justify-content: space-around;
+
+        h3 {
+            color: $beige;
+            font-family: 'Amatic SC', cursive;
+        }
+    
+        &__list{
+            align-items: center;
+            margin-right: 1rem;
+            
+            form{
+              border: 1px solid rgba(0, 0, 0, 0.322);
+              display: flex;
+              align-items: baseline;
+              padding: 0.2rem;
+            }
+    
+            &__form--text{
+                height: 2rem;
+                border: none;
+                font-size: 1rem;
+            }
+            &__form--icon{
+                height: 2rem;
+                width: 2.5rem;
+                background-image: url("https://image.flaticon.com/icons/png/512/622/622669.png");
+                background-size: 2rem;
+                background-repeat: no-repeat;
+                border: none;
+                background-position: center;
+                background-color: white;
+            }
+
+            .opening-hours {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+
+                p {
+                    border: 1px solid black;
+                    padding: 0.2rem 0.5rem;
+                    font-size: 0.7rem;
+                }
+            }
+
+            .container__stores__card {
+                overflow-y: auto;
+                height: 45%;
+
+                .stores__card {
+                    border: 1px solid black;
+                    width: 13rem; 
+                    margin-bottom: 1rem;
+    
+                    h4 {
+                        text-transform: uppercase;
+                        font-size: 0.8rem;
+                        margin: 0.5rem;
+                    }
+    
+                    h5 {
+                        font-size: 0.7rem;
+                        text-transform: uppercase;
+                        margin: 0.5rem;
+                    }
+    
+                    .address {
+                        font-size: 0.5rem;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        margin: 0.5rem;
+                    }
+    
+                    .open {
+                        font-size: 0.5rem;
+                        font-weight: 500;
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        
+        .mapbtn {
+            display: none;
+        }
+
+        &__map{
+            h3 {
+                color: white;
+                font-family: 'Amatic SC', cursive;
+            }
+        }
+    }
+
+    .intouch{
+
+        display: flex;
+        justify-content: space-around;
+
+        .message{
+            width: 20rem;
+
+            h3 {
+                font-family: 'Amatic SC', cursive;
+                color: $beige
+            }
+
+            h5{
+                text-transform: uppercase;
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+            }
+
+            form {
+                border: 1px solid rgba(0, 0, 0, 0.322);
+                display: flex;
+                align-items: baseline;
+                padding: 0.2rem;
+                width: 100%;
+            }
+
+            &__form--text {
+                border: none;
+                width: 100%;
+            }
+
+            &__form--icon {
+                height: 2rem;
+                width: 2.5rem;
+                background-image: url("https://image.flaticon.com/icons/png/512/142/142051.png");
+                background-size: 1rem;
+                background-repeat: no-repeat;
+                border: none;
+                background-position: center;
+                background-color: white;
+            }
+            p {
+                border: 1px solid black;
+                padding: 0.3rem 0.5rem;
+                margin-bottom: 2rem;
+            }
+            .email {
+                opacity: 50%;
+                border: none;
+                width: 100%;
+                height: 2rem;
+            }
+            .empty {
+                border: none;
+                width: 100%;
+                height: 2rem;
+            }
+        }
+
+        .form {
+            width: 16rem;
+
+            h3 {
+                color: white;
+            }
+
+            h5{
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+
+            #message {
+                width: 97%;
+                height: 13rem;
+            }
+
+            #submit{
+                color: $greenish;
+                background-color: $CTA1;
+                border: 1px solid black;
+                padding: 0.5rem 1rem;
+                width: 100%;
+            }
+        
+        }
+
+        .faq {
+            width: 20rem;
+
+            h3 {
+                font-family: 'Amatic SC', cursive;
+                color: $beige
+            }
+
+            h5{
+                color: white;
+            }
+
+            &__text {
+                box-sizing:border-box;
+                background-color: $CTA2;
+                color: white;
+                padding: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 50rem) {
+    .contact-us {
+
+        .stores {
+            display: flex;
+            flex-direction: column;
+
+            .stores__list {
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 2rem;
+            }
+            .stores__map img {
+                display: none;
+            }
+            .mapbtn {
+                display: block;
+                background-color: $CTA2;
+                color: white;
+                font-family: "Poppins",sans-serif;
+                text-transform: uppercase;
+                cursor: pointer;
+                width: 58%;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 0.7rem 2rem;
+            }
+        }
+
+        .intouch {
+            flex-direction: column;
+            align-items: center;
+
+            .faq {
+                margin-top: 2rem;
+            }
+        }
+    }
+}
+
+
+

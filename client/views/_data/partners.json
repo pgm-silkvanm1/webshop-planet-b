@@ -1,0 +1,23 @@
+[
+{
+    "img": "assets/img/worldwide.svg",
+    "name" : "Planet earth"
+},  
+{
+    "img": "assets/img/instagram.svg",
+    "name" : "Instagram"
+},  
+{
+    "img": "assets/img/apple.svg",
+    "name" : "Apple"
+}, 
+{
+    "img": "assets/img/adidas.svg",
+    "name" : "Addidas"
+},
+{
+    "img": "assets/img/nike.svg",
+    "name" : "Nike"
+}
+
+]

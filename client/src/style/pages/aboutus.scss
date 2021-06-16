@@ -1,0 +1,86 @@
+.container__details{
+    display: flex;
+    justify-content: space-between;
+    &__card{
+        padding: 1rem;
+    }
+}
+
+.team__cards{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+
+    h4{
+        text-align: center;
+        margin-bottom: 0.3rem;
+    }
+    p{
+        text-align: center;
+    }
+    img{
+        width: 11rem;
+        height: 11rem;
+        transition: all ease 0.3s;
+        opacity: 50%;
+        border-radius: 50%;
+        object-fit: cover;  
+    }
+
+    img:hover {
+        transform: scale(1.1);
+        opacity: 100%;
+    }
+  
+
+
+}
+
+.contact__container{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
+
+   form{
+        display: flex;
+       flex-direction: column;
+       width: 100%;
+       margin-right: 2rem;  
+       input{
+           margin:0.5rem 0;
+           border: none;
+       }
+        
+       textarea{
+           height: 6rem;
+           border: none;
+       }
+
+       #email{
+           padding: 0.4rem
+       }
+       #submit{
+           cursor: pointer;
+           padding: 0.4rem;
+           background: $beige;
+       }
+       #submit:hover{
+           background: black;
+           color: whitesmoke;
+       }
+   }
+
+   .container__location{
+       ul{
+           list-style-type: none;
+           padding: 0;
+       }
+       img{
+           width: 50%;
+       }
+
+   }
+
+
+}

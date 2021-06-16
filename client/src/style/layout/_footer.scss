@@ -1,0 +1,178 @@
+footer{
+    background: $gray;
+    font-family: 'Poppins', sans-serif;
+
+    .payments{
+        background-color: white;
+        margin: 0;
+        border-top: 1px solid black;
+
+        &__list {
+            display: flex;
+            justify-content: space-between;
+            width: 45%;
+            margin: 0 auto;
+
+            li {
+                list-style: none;
+            }
+
+            .payments-logo {
+                width: 4rem;
+                height: 4rem;
+            }
+        }
+    }
+  
+    .container-footer{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        color: $greenish;
+
+
+        form {
+            display: flex;
+            border: 1px solid grey;
+            padding: 0.2rem;
+
+            input {
+                border: none;
+                background-color: $gray;
+                color: $greenish;
+                opacity: 29%;
+            }
+
+            .submit {
+                cursor: pointer;
+            }
+        }
+
+        li{
+            padding-bottom: 0.5rem;
+            list-style-type: none;
+            font-size: 0.8rem;
+        }
+        h1{
+            padding: 0;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+    
+        }
+        a{
+            text-decoration: none;
+            color: $greenish;
+        }
+
+        a:hover{
+            color: $greenish;
+            transition: all ease 0.2s;
+        }
+      
+        .extra-links{
+            padding: 0;
+        }
+           
+        
+        p{
+            padding: 1rem;
+            width: 15rem;
+            margin: 0rem;    
+        }
+
+        .container__links{
+            display: flex;
+            margin: 0;
+            padding: 0;
+          }
+
+        svg{
+            width: 2rem;
+            height: 2rem;
+            fill: white;
+            padding-right: 0.3rem;
+        }
+        
+        svg:hover{
+            fill: $beige;
+            transition: 0.2s all ease;
+        }
+
+    }
+   
+    
+    .footer--orange{
+        background-color: $beige;
+        color: white;
+        margin: 0;
+        padding: 0.5rem;
+        font-size: 0.7rem;
+
+        &__list {
+            display: flex;
+            justify-content: space-around;
+            width: 40%;
+            margin: 0 auto;
+
+            li {
+                list-style: none;
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+        }
+    }    
+}
+
+@media (max-width: 50rem) {
+    footer {
+        .payments{
+            &__list {
+                li {
+
+                    .payments-logo {
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+            }
+        }
+
+        .container-footer {
+            padding-left: 2rem;
+            flex-direction: column;
+
+            form {
+                width: 65%;
+            }
+        }
+
+        .footer--orange {
+            &__list {
+                justify-content: space-between;
+                width: 80%;
+                margin: 0;
+            }
+        }
+    }
+}
+
+  
+ 
+  
+
+
+ 
+  
+
+  
+  
+
+  
+
+  
+  
+  

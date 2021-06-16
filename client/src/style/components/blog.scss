@@ -1,0 +1,49 @@
+
+.blog__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: $greenish;
+    border-radius:2rem ;
+    padding: 2rem;
+    flex-wrap: wrap;
+        
+    li{
+        list-style-type: none;
+        opacity: 0.5;
+
+        a{
+            display: flex;
+            margin: 2rem;
+            flex-direction: column;
+            align-items: center;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            
+            
+            img{
+                width: 14rem;
+                object-fit: cover;
+                height: 10rem;
+                
+            }
+        }
+       
+    }
+  
+}
+
+.blog__container li:hover{
+    opacity: 1;
+    transition: all ease 0.3s;
+
+}
+
+@media (min-width: 70rem) {
+    .blog__container {
+        flex-wrap: nowrap;
+        padding: 1rem;
+        
+    }
+} 

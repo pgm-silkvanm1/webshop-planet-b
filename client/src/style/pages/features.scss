@@ -1,0 +1,58 @@
+.hero__feature{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/assets/img/background-feature.jpg");
+    background-position: center;
+
+
+    img{
+        margin: 1rem;    
+        width: 10rem;
+
+    }
+}
+
+.title__feature{
+    text-align: center;
+}
+.container__feature{
+    color: $whitish;
+    border-radius: 1.4rem;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 5rem;
+    svg{
+        width: 3rem;
+        fill: $beige;
+    }
+    h2{
+        margin-top: 0.5rem;
+
+    }
+    
+    &__images{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 10rem;
+            margin: 1rem;
+        }
+    }
+  
+}
+
+.background__green{
+    background-color: $greenish;
+}
+
+.background__blue{
+    background-color: $blueish;
+}
+ 
+
+.background__red{
+    background-color: #204d44;
+}
+

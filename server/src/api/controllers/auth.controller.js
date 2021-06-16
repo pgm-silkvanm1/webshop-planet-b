@@ -15,7 +15,7 @@ const login = async (req, res, next) => {
 
 		const user = await database.User.findOne({ where: { email } });
 
-		if (!user) throw new HTTPError('Email or password does not match! bruh', 400);
+		if (!user) throw new HTTPError('Email or password does not match!', 400);
 		if (!isValidPassword(user, password)) throw new HTTPError('Email or password does not match!', 400);
 		console.log(user.email);
 		const jwtToken = jwt.sign({ userId: user.id, email: user.email }, process.env.JWT_SECRET_KEY, { expiresIn: parseInt(process.env.JWT_LIFETIME, 10) });

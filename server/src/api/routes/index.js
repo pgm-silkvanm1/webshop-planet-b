@@ -27,95 +27,244 @@ Routes
 
 /**
  * @swagger
- * /api/categories:
- *   get:
- *     summary: Retrieve a list of categories
- *     description: Retrieve a list of categories. Can be used to populate a list of categories when prototyping or testing an API.*
- *     responses:
- *       200:
- *         description: A list of categories.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: integer
- *                         description: The category ID.
- *                         example: 1
- *                       name:
- *                         type: string
- *                         description: The categories name.
- *                         example: Computers
- *                      createdAt:
- *                          type: date
- *                          description: The date at wich the category was created
- *                          example: 2021-05-24T20:18:50.847Z
- *                      updatedAt:
- *                          type: date
- *                          description: The date at wich the category was created
- *                          example: 2021-05-24T20:18:50.847Z
- *                      children:
- *                          type: array
- *                          items:
- *                              type: object
- *                              properties:
- *                                  id:
- *                                      type: integer
- *                                      description: The category ID.
- *                                      example: 1
- *                                  name:
- *                                  type: string
- *                                  description: The categories name.
- *                                  example: Computers
- *                                  createdAt:
- *                                      type: date
- *                                      description: The date at wich the category was created
- *                                      example: 2021-05-24T20:18:50.847Z
- *                                  updatedAt:
- *                                      type: date
- *                                      description: The date at wich the category was created
- *                                      example: 2021-05-24T20:18:50.847Z
- *
+ * components:
+ *      schemas:
+ *          Category:
+ *              type: object
+ *              required:
+ *                  - id
+ *                  - name
+ *                  - parentId
+ *                  - createdAt
+ *                  - updatedAt
+ *              properties:
+ *                  id:
+ *                      type: integer
+ *                      description: An auto-incremented integer id
+ *                  name:
+ *                      type: string
+ *                      description: The category name
+ *                  parentId:
+ *                      type: integer
+ *                      description: The id of the parent category
+ *                  createdAt:
+ *                      type: string
+ *                      description: A timestamp string of the date when the category was created
+ *                  updatedAt:
+ *                      type: string
+ *                      description: A timestamp string of the date when the category was last updated
+ *              example:
+ *                  id: 6
+ *                  name: kitchen
+ *                  parentId: 1
+ *                  createdAt: 2021-06-15T22:34:35.882Z
+ *                  updatedAt: 2021-06-15T22:34:35.882Z
+ *          SortedCategory:
+ *              type: object
+ *              required:
+ *                  - id
+ *                  - name
+ *                  - parentId
+ *                  - createdAt
+ *                  - updatedAt
+ *                  - children
+ *              properties:
+ *                  id:
+ *                      type: integer
+ *                      description: An auto-incremented integer id
+ *                  name:
+ *                      type: string
+ *                      description: The category name
+ *                  parentId:
+ *                      type: integer
+ *                      description: The id of the parent category
+ *                  createdAt:
+ *                      type: string
+ *                      description: A timestamp string of the date when the category was created
+ *                  updatedAt:
+ *                      type: string
+ *                      description: A timestamp string of the date when the category was last updated
+ *                  children:
+ *                      type: array
+ *                      items:
+ *                          type: object
+ *                          required:
+ *                              - id
+ *                              - name
+ *                              - parentId
+ *                              - createdAt
+ *                              - updatedAt
+ *                          properties:
+ *                          id:
+ *                              type: integer
+ *                              description: An auto-incremented integer id
+ *                          name:
+ *                              type: string
+ *                              description: The category name
+ *                          parentId:
+ *                              type: integer
+ *                              description: The id of the parent category
+ *                          createdAt:
+ *                              type: string
+ *                              description: A timestamp string of the date when the category was created
+ *                          updatedAt:
+ *                              type: string
+ *                              description: A timestamp string of the date when the category was last updated
+ *                          example:
+ *                              id: 6
+ *                              name: kitchen
+ *                              parentId: 1
+ *                              createdAt: 2021-06-15T22:34:35.882Z
+ *                              updatedAt: 2021-06-15T22:34:35.882Z
+ *              example:
+ *                  id: 2
+ *                  name: cleaning
+ *                  parentId: null
+ *                  createdAt: 2021-06-15T22:34:35.882Z
+ *                  updatedAt: 2021-06-15T22:34:35.882Z
+ *                  children:
+ *                      id: 9
+ *                      name: all-purpose
+ *                      parentId: 2
+ *                      createdAt: 2021-07-15T22:34:35.882Z
+ *                      updatedAt: 2021-07-15T22:34:35.882Z
  */
-router.get('/categories', categoryController.getCategories);
-router.get('/categories/sorted', categoryController.getSortedCategories);
+
+/**
+ * @swagger
+ * tags:
+ *  name: Categories
+ *  description: The category managing API
+ */
+
 /**
  * @swagger
  * /api/categories:
+ *  get:
+ *      summary: Retrieve a list of categories
+ *      tags: [Categories]
+ *      responses:
+ *          200:
+ *              description: The list of all categories
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              $ref: '#/components/schemas/Category'
+ */
+router.get('/categories', categoryController.getCategories);
+/**
+ * @swagger
+ * /api/categories/sorted:
+ *  get:
+ *      summary: Retrieve a list of categories sorted by parentId
+ *      tags: [Categories]
+ *      responses:
+ *          200:
+ *              description: The list of all sorted categories
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              $ref: '#/components/schemas/SortedCategory'
+ */
+router.get('/categories/sorted', categoryController.getSortedCategories);
+/**
+ * @swagger
+ * /api/categories/{id}:
  *   get:
- *     summary: Get a specific category by Id
- *     description: Get a specific category by Id
+ *      summary: Get a specific category by Id
+ *      tags: [Categories]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: The category id
+ *      responses:
+ *          200:
+ *              description: The specific category by Id
+ *              contents:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/Category'
+ *          404:
+ *              description: Could not find category with id
  */
 
 router.get('/categories/:categoryId', categoryController.getCategoryById);
 /**
  * @swagger
  * /api/categories:
- *   get:
- *     summary: Get a specific existing category
- *     description: Get a specific existing category
+ *   post:
+ *      summary: Create a new category
+ *      tags: [Categories]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: '#/components/schemas/Category'
+ *      responses:
+ *          200:
+ *              description: The category was succesfully created
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/Category'
+ *          500:
+ *              description: Server Error
  */
 router.post('/categories', adminAuth, categoryController.createCategory);
 /**
  * @swagger
- * /api/categories:
- *   post:
- *     summary: Create a new category
- *     description: Create a new category
+ * /api/categories{id}:
+ *   put:
+ *      summary: Update the category by id
+ *      tags: [Categories]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: The category id
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: '#/components/schemas/Category'
+ *      responses:
+ *          200:
+ *              description: The category was succesfully updated
+ *          404:
+ *              description: The category was not found
+ *          500:
+ *              description: Server Error
  */
 router.put('/categories/:categoryId', adminAuth, categoryController.updateCategory);
 /**
  * @swagger
- * /api/categories:
+ * /api/categories/{id}:
  *   delete:
- *     summary: Delete an existing category
- *     description: Delete an existing category
+ *      summary: Delete an existing category
+ *      tags: [Categories]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: The category id
+ *      responses:
+ *          200:
+ *              description: The category was succesfully deleted
+ *          404:
+ *              description: The category was not found
  */
 router.delete('/categories/:categoryId', adminAuth, categoryController.deleteCategory);
 
@@ -128,79 +277,10 @@ router.post('/products', adminAuth, productController.createProduct);
 router.put('/products/:id', adminAuth, productController.updateProduct);
 router.delete('/products/:id', adminAuth, productController.deleteProduct);
 
-/**
- * @swagger
- * /api/users:
- *   get:
- *     summary: Retrieve a list of users
- *     description: Retrieve a list of users. Can be used to populate a list of userss when prototyping or testing an API.*
- *     responses:
- *       200:
- *         description: A list of users.
- *         content:
- *           application/json:
- *             schema:
- *              type: object
- *              properties:
- *                  data:
- *                       type: object
- *                       properties:
- *                           id:
- *                           type: integer
- *                           description: The user ID.
- *                           example: 1
- *                       uuid:
- *                           type: uuid
- *                           description: The user ID.
- *                           example: de0bd885-6c95-4828-927e-d205cbf843ad
- *                        email:
- *                           type: string
- *                           description: The user email address.
- *                           example: johndoe @ someone.com
- *                       password:
- *                           type: string
- *                           description: The user password.
- *                           example: mypassword
- *                       admin:
- *                          type: boolean
- *                          description: The user role.
- *                          example: false
- */
-router.get('/users', adminAuth, userController.getUsers);
-/**
- * @swagger
- * /api/users:
- *   get:
- *     summary: Get a specific user by user uuid
- *     description: Get a specific user by user uuid
- */
-router.get('/users/:id', viewAuth, userController.getUserById);
-
-/**
- * @swagger
- * /api/users:
- *   post:
- *     summary: Create a new user
- *     description: Create a new user
- */
+router.get('/users', userController.getUsers);
+router.get('/users/:id', userController.getUserById);
 router.post('/users', adminAuth, userController.createUser);
-
-/**
- * @swagger
- * /api/users/{uuid}:
- *   put:
- *     summary: Update an existing user
- *     description: Update an existing user
- */
 router.put('/users/:id', viewAuth, userController.updateUser);
-
-/**
- * @swagger
- * /api/users/{uuid}:
- *   delete:
- *     summary: Delete an existing user
- *     description: Delete an existing user
- */
 router.delete('/users/:id', viewAuth, userController.deleteUser);
 
 router.get('/orders', adminAuth, orderController.getOrders);

@@ -17,24 +17,6 @@ const getCategories = async (req, res, next) => {
 	}
 };
 
-/*
-Get all sub categoriers by parent category Id
- */
-
-// const getSubCategoriesByParentCategoryId = async (req, res, next) => {
-// 	try {
-// 		const { parentCategoryId } = req.params;
-// 		// Get categories from database
-// 		let categories = null;
-// 			categories = await database.Category.findAll({where: {parentId: parentCategoryId}})
-
-// 		// Send response
-// 		res.status(200).json(categories);
-// 	} catch (error) {
-// 		handleHTTPError(error, next);
-// 	}
-// };
-
 /**
  Get parent category with it's child categories
  */

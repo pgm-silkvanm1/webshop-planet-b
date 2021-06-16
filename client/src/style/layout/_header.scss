@@ -6,6 +6,12 @@ header{
     margin: 0 auto;
     padding-bottom: 2rem;
   }
+  nav {
+    .small__menu {
+      margin-right: 1rem;
+      margin-top: 0.2rem;
+    }
+  }
 }
 
 .nav__hamburger{
@@ -43,7 +49,7 @@ header{
   top: auto;
   background-color: #fff;
   align-items: center;
-  margin-top: 10rem;
+  margin-top: 3.5rem;
   max-width: 100%;
   padding: 0;
   justify-content: center;
@@ -61,7 +67,7 @@ header{
 
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: flex-start;
   margin: 0 auto;
@@ -98,6 +104,10 @@ nav a:hover{
 .nav__practical{
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
 
   form{
     border: 1px solid rgba(0, 0, 0, 0.322);
@@ -118,7 +128,7 @@ nav a:hover{
     height: 2rem;
     width: 2.5rem;
     background-image: url("https://image.flaticon.com/icons/png/512/622/622669.png");
-    background-size: 2rem;
+    background-size: 1.6rem;
     background-repeat: no-repeat;
     border: none;
     background-position: center;
@@ -141,10 +151,19 @@ nav a:hover{
 
 }
 
+@media(min-width: 50rem){
+  .nav__practical{
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    margin: 0;
+  }
+}
+
 @media (min-width: 70rem){
   nav{
     flex-wrap: nowrap;
     align-items: flex-start;
+    justify-content: space-between;
   }
   .nav__list{
     display: flex;
@@ -156,6 +175,7 @@ nav a:hover{
     align-items: flex-start;
   }
 
+
   .nav__list ul{
     flex-direction: row;
     justify-content: flex-start;
@@ -165,6 +185,8 @@ nav a:hover{
   .nav__list li{
     padding-bottom: 0;
   }
+
+
 
 }
 

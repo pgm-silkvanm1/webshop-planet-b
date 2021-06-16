@@ -11,7 +11,8 @@
     padding: 1rem;
     top: 0;
     right: 0;
-    width: 30rem;
+    width: 17rem;
+    
     height: fit-content;
     background-color: white;
     box-shadow: 20px 20px 5px 2000px rgba(0,0,0,0.75);
@@ -38,9 +39,10 @@
         margin-bottom: 1rem;
         h4{
             margin: 0;
+            font-size: 0.7rem;
         }
         img{
-            width: 7rem;
+            width: 5rem;
         }
         p{
             font-size: 0.7rem;
@@ -56,18 +58,20 @@
 .basket__total{
     border-top: 1px solid black;
     font-family: 'Poppins',sans-serif;
+    font-size: 0.7rem;
     &--details{
         display: flex;
         justify-content: space-between;
-        font-size: 0.4rem;
+        font-size: 0.7rem;
     }
     .basket__button{
-        margin-top: 3rem;
+        margin-top: 0rem;
     
         button{
             background:none;
             border: 1px solid black;
             padding: 0.6rem;
+            font-size: 0.6rem;
             font-family: 'Poppins';
             cursor: pointer;
         }
@@ -91,6 +95,20 @@
               font-size: 1rem;
         
           }
+          button{
+              font-size: 1.5rem;
+          }
+  }
+
+  .basket__popup.open{
+    width: 30rem;
+
+    img{
+        width: 7rem;
+    }
+    h4{
+        font-size: 1rem;
+    }
   }
   
   } 

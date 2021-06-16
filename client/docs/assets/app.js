@@ -124,6 +124,7 @@
               <h1>${product.name}</h1>
               <img class="big-photo" src="${product.image}" alt="Elate Beauty Palet">
               <div class="ingredients">
+                
                   <h3>
                       Ingredients
                   </h3>
@@ -138,6 +139,7 @@
               </div>
             </div>
           <div class="description">
+          <h2 class="price">€${product.price}</h2>
           <p>
               ${product.description}
           </p> 

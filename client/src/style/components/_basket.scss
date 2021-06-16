@@ -49,6 +49,7 @@
             display: flex;
             flex-direction: column;
             font-size: 0.7rem;
+            width: 90%;
         }
     }
 }
@@ -59,10 +60,16 @@
     &--details{
         display: flex;
         justify-content: space-between;
-        font-size: 0.4rem;
+        font-size: 0.7rem;
+        p{
+            margin: 0.3rem 0;
+        }
+        h4 {
+            font-size: 1rem;
+        }
     }
     .basket__button{
-        margin-top: 3rem;
+        margin-top: 2rem;
     
         button{
             background:none;
@@ -85,13 +92,13 @@
 
 @media (min-width: 70rem) {
     .basket__total{
-          margin-top: 25%;
+        margin-top: 25%;
 
-          &--details{
-              font-size: 1rem;
+        &--details{
+            font-size: 1rem;
         
-          }
-  }
+        }
+    }
   
-  } 
+} 
   

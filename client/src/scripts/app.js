@@ -15,7 +15,6 @@
     },
 
     cacheElements() {
-      this.toTop = document.querySelector(".to-top");
       this.$basket = document.querySelector(".basket__icon");
       this.$popUp = document.querySelector(".basket__popup");
       this.$close = document.querySelector(".basket__close");
@@ -34,13 +33,7 @@
     },
 
     registerListeners() {
-      this.toTop.addEventListener("click", () => {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "smooth",
-        });
-      });
+    
 
       if (this.$productList !== null) {
         this.$productList.addEventListener("click", (ev) => {
@@ -70,6 +63,7 @@
         this.$navList.classList.toggle("open");
       });
     },
+
 
     async printHomepage() {
 
@@ -170,7 +164,7 @@
         this.users = await this.webshopApi.getUsers();  
         const reviews = this.productDetail.reviews;
 
-        console.log(reviews.length)
+          console.log(this.users)
         this.$detailReviews.innerHTML = reviews.map((event)=> {
           const reviewUser = this.users.find (user => user.id === event.userId)
   
@@ -283,6 +277,8 @@
 
       });
     }
+
+
 }
   app.init();
 })();
